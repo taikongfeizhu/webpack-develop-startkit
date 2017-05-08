@@ -1,0 +1,40 @@
+.account-dashboard {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  padding: .32rem 0 .47rem; 
+  .account-left {
+    flex: 1;
+  }
+  .account-right {
+    flex: 1.1205;
+  }
+  div {
+    text-align: center;
+    &:first-of-type::after {
+      content: " ";
+      position: absolute;
+      top: .44rem;
+      left: 47.0%;
+      height: 1.40rem;
+      display: block;
+      border-left: 2px solid #EEE;
+    }
+    .account-num {
+      font-family: PingFangSC-Semibold, sans-serif;
+      line-height: 1.12rem;
+      color: #BCB7C5;
+      font-size: .8rem;
+    }
+    .account-color-red {
+      color: #F09D9D;
+    }
+    .account-detail {
+      font-family: PingFangSC-Regular, sans-serif;
+      line-height: .40rem;
+      color: #776E88;
+      font-size: .28rem;
+      text-decoration: underline;
+    }
+  }
+} 

@@ -1,0 +1,11 @@
+.DS_STORE
+*.log
+
+node_modules
+
+dist
+output
+coverage
+
+.idea/
+deploy.sh

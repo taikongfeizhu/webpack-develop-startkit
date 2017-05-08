@@ -1,0 +1,20 @@
+{
+  "apps": [
+    {
+      "name": "os_mobile",
+      "script": "der-server.js",
+      "watch": true,
+      "node_args": "--harmony",
+      "merge_logs": true,
+      "cwd": "./bin",
+      "env": {
+        "NODE_ENV": "development",
+        "PORT": 3000
+      },
+      "env_production": {
+        "NODE_ENV": "production",
+        "PORT": 3003
+      }
+    }
+  ]
+}

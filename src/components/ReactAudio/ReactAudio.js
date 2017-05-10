@@ -6,7 +6,7 @@ import raf from 'raf'
 import PauseImage from './assets/PauseIcon.png'
 import PlayImage from './assets/PlayIcon.png'
 
-import './ReactAudio.scss'
+import './ReactAudio.less'
 
 class ReactAudio extends React.Component {
 

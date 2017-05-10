@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
-import './AccountDashboard.scss'
+import './AccountDashboard.less'
 
 export const AccountDashboard = (props) => (
   <div className='account-dashboard os-card'>

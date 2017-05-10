@@ -1,7 +1,19 @@
 const proxy = [
   {
-    url: '/bakckend/*',
-    target: 'http://10.2.1.3:8000'
+    url: '/opportunity/*',
+    target: 'http://10.2.97.17:8331'
+  },
+  {
+    url: '/sales/*',
+    target: 'http://10.2.97.17:8331'
+  },
+  {
+    url: '/call_center/*',
+    target: 'http://10.2.97.17:8331'
+  },
+  {
+    url: '/os/*',
+    target: 'http://10.2.97.17:8331'
   }
 ]
 

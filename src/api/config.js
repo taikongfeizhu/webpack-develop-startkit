@@ -2,7 +2,26 @@ import baseAPIs from './base'
 
 export const types = {
   getOpporDetail: 'getOpporDetail',
-  getIndustry: 'getIndustry'
+  getIndustry: 'getIndustry',
+  getContacts: 'getContacts',
+  getTrackList: 'getTrackList',
+  getTrackType: 'getTrackType',
+  postReject: 'postReject'
+}
+
+export const CUSTOMER_STATUS = {
+  TRACKING: 'tracking',
+  UNTRACK: 'untrack'
+}
+
+export const VISIT_STATUS = {
+  UNVISIT: 1,
+  VISITED: 2
+}
+
+export const RECHARGE_TYPE = {
+  NUM: 'customer_num',
+  AMOUNT: 'amount'
 }
 
 // TODO:后续随 API 增加，可以考虑根据功能拆分成单独文件维护

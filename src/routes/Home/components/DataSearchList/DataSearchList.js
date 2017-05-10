@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 import { Icon } from 'antd-mobile'
 import DataImage from './assets/search.png'
 import InfoImage from './assets/info.png'
-import './DataSearchList.scss'
+import './DataSearchList.less'
 
 const SearchItem = (props) => (
   <div className='search-item'>

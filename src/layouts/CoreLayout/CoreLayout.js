@@ -1,6 +1,6 @@
 import React from 'react'
-import 'static/styles/core.scss'
-import './CoreLayout.scss'
+import 'static/styles/core.less'
+import './CoreLayout.less'
 import ScrollToTop from './ScrollToTop'
 
 export const CoreLayout = ({ children }) => (

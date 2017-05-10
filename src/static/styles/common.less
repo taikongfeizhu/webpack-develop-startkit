@@ -1,0 +1,31 @@
+@import "./helper.less";
+
+.card {
+  border: 1px solid @card-border-color;
+  padding: 30px 20px;
+  background-color: @card-background-color;
+  .hd {
+    margin-bottom: 26px;
+  }
+}
+
+.ant-calendar-disabled-cell.ant-calendar-today .ant-calendar-date {
+  color: #108ee9;
+}
+
+#root {
+  // 重写ant-select 和 cascader样式
+  .select, .cascader {
+    width: @select-width;
+  }
+  // 重写ant-tabs样式
+  .ant-tabs-ink-bar {
+    background-color: #f04134;
+  }
+  .ant-tabs-nav .ant-tabs-tab-active {
+    color: #f04134;
+  }
+  .ant-tabs-nav .ant-tabs-tab:hover {
+    color: #f46e65;
+  }
+}

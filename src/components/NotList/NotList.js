@@ -1,5 +1,5 @@
 import React from 'react'
-import './NotList.scss'
+import './NotList.less'
 import PrinterImage from './assets/printer.png'
 
 export const NotList = (props) => {

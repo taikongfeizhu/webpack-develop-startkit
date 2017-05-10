@@ -8,7 +8,7 @@ import _ from 'lodash'
 import { formatCustomerData } from 'until'
 import Header from 'components/Header'
 
-import './HomeView.scss'
+import './HomeView.less'
 
 class HomeView extends React.Component {
   constructor (props) {

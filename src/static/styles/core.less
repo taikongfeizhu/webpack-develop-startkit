@@ -1,5 +1,6 @@
-@import 'base';
-@import '~normalize.css/normalize';
+// @import 'base.css';
+@import '~normalize.css/normalize.css';
+@import './common.less';
 
 // Some best-practice CSS that's useful for most apps
 // Just remove them if they're not what you want
@@ -20,7 +21,7 @@ body {
   box-sizing: inherit;
 }
 
-// reset 
+// reset
 div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -30,8 +31,8 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
   margin: 0;
@@ -43,12 +44,13 @@ time, mark, audio, video {
   font-family: PingFangSC-Regular, sans-serif;
 }
 
-article, aside, details, figcaption, figure, 
+article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
   display: block;
 }
 body {
-  line-height: 1;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }
 ol, ul {
   list-style: none;

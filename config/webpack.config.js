@@ -186,8 +186,9 @@ const POSTCSS = [
     propWhiteList: []
   })
 ]
+
 webpackConfig.module.rules.push({
-  test: /\.scss$/,
+  test: /\.less$/,
   use: [
     'style-loader',
     BASE_CSS_LOADER,
@@ -201,10 +202,11 @@ webpackConfig.module.rules.push({
       }
     },
     {
-      loader: 'sass-loader'
+      loader: 'less-loader'
     }
   ]
 })
+
 webpackConfig.module.rules.push({
   test: /\.css$/,
   // exclude : null,

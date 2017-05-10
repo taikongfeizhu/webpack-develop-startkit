@@ -1,4 +1,3 @@
-import _ from 'lodash'
 import moment from 'moment'
 
 export function formatTrackingDate (date, format = 'YYYY/MM/DD HH:mm') {

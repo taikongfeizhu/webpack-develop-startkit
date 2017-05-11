@@ -1,0 +1,85 @@
+{
+  "resCode": "000",
+  "data": {
+    "pageSize": "10",
+    "countSize": "5",
+    "list": [
+      {
+        "duration": "60",
+        "classStartTime": "1481254200000",
+        "gradeId": "1008",
+        "courseTitle": "11月11日初一数学作业错题讲解",
+        "subjectId": "10011",
+        "topicNum": "0",
+        "advertiseResId": "0",
+        "isHot": "0",
+        "courseId": "6225885867050016",
+        "isRecommend": "0"
+      },
+      {
+        "duration": "60",
+        "classStartTime": "1480473600000",
+        "gradeId": "1001",
+        "courseTitle": "测试讲作业提示框bug-2133",
+        "subjectId": "10010",
+        "topicNum": "0",
+        "advertiseResId": "0",
+        "isHot": "0",
+        "courseId": "6163545821676576",
+        "isRecommend": "0"
+      },
+      {
+        "duration": "240",
+        "classStartTime": "1480500000000",
+        "gradeId": "1001",
+        "courseTitle": "勿动-勿购买-佳明测试讲作业-1024-006",
+        "subjectId": "10010",
+        "topicNum": "2",
+        "advertiseResId": "0",
+        "isHot": "0",
+        "courseId": "6175021449937952",
+        "isRecommend": "1"
+      },
+      {
+        "duration": "60",
+        "classStartTime": "1480665600000",
+        "gradeId": "1008",
+        "courseTitle": "11月10日初一数学作业错题讲解",
+        "subjectId": "10011",
+        "topicNum": "0",
+        "advertiseResId": "0",
+        "isHot": "0",
+        "courseId": "6223730227020832",
+        "isRecommend": "0"
+      },
+      {
+        "duration": "60",
+        "classStartTime": "1481254200000",
+        "gradeId": "1008",
+        "courseTitle": "11月11日初一数学作业错题讲解",
+        "subjectId": "10011",
+        "topicNum": "0",
+        "advertiseResId": "0",
+        "isHot": "0",
+        "courseId": "6225884891743264",
+        "isRecommend": "0"
+      },
+      {
+        "duration": "60",
+        "classStartTime": "1481254200000",
+        "gradeId": "1008",
+        "courseTitle": "11月11日初一数学作业错题讲解",
+        "subjectId": "10011",
+        "topicNum": "0",
+        "advertiseResId": "0",
+        "isHot": "0",
+        "courseId": "6225885867050016",
+        "isRecommend": "0"
+      }
+    ],
+    "currPage": "1",
+    "totalPages": "2"
+  },
+  "currTime": "1480064767978",
+  "resMsg": "成功"
+}

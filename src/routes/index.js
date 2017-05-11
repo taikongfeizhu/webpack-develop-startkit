@@ -7,7 +7,7 @@ import NotFound from './NotFound'
     PlainRoute objects to build route definitions.   */
 
 export const createRoutes = (store) => ({
-  path        : '/apps/',
+  path        : '/',
   component   : CoreLayout,
   indexRoute  : Home(store),
   childRoutes : [

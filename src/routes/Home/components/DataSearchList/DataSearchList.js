@@ -31,12 +31,12 @@ export const DataSearchList = (props) => (
     <SearchItem
       title='数据查询'
       img={DataImage}
-      url='/apps/dataSearch'
+      url='/dataSearch'
     />
     <SearchItem
       img={InfoImage}
       title='客户信息'
-      url='/apps/customerInfo'
+      url='/customerInfo'
     />
   </div>
 )

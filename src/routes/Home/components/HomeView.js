@@ -50,7 +50,7 @@ class HomeView extends React.Component {
             hideTitle={false}
             total={trackingNum}
             source={trackingList}
-            url={'/apps/trackList/?status=tracking'}
+            url={'/trackList/?status=tracking'}
             customerType={'跟进中'}
           />
           <WhiteSpace size='lg' />
@@ -59,7 +59,7 @@ class HomeView extends React.Component {
             hideTitle={false}
             total={untrackedNum}
             source={untrackedList}
-            url={'/apps/trackList/?status=untrack'}
+            url={'/trackList/?status=untrack'}
             customerType={'待跟进'}
           />
           <WhiteSpace size='lg' />

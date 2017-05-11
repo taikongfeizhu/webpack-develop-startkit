@@ -1,5 +1,9 @@
 const proxy = [
   {
+    url: '/back_end/page/*',
+    target: 'http://127.0.0.1:3000/mock'
+  },
+  {
     url: '/opportunity/*',
     target: 'http://10.2.97.17:8331'
   },

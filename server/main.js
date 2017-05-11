@@ -11,6 +11,7 @@ const proxy = require('http-proxy-middleware')
 const bodyParser = require('body-parser')
 const querystring = require('querystring')
 const proxyConfig = require('./proxy.config')
+const mock = require('./routes/mock')
 
 const app = express()
 
@@ -71,6 +72,9 @@ if (project.env === 'development') {
   proxyConfig.forEach(function (item) {
     app.use(item.url, proxy(createProxySetting(item.target)))
   })
+
+  // mock routes
+  app.use(project.compiler_mock_route, mock)
 
   // Serve static assets from ~/public since Webpack is unaware of
   // these files. This middleware doesn't need to be enabled outside

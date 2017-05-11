@@ -7,7 +7,7 @@ export const DataSearch = (props) => (
   <div>
     <Header title={'数据查询'} />
     <div className='data-search os-card os-content'>
-      <Link to={`/apps/recharge/search?type=customer_num`}>
+      <Link to={`/recharge/search?type=customer_num`}>
         <div className='data-search-item'>
           <span className='data-search-title'>数据查询1</span>
           <span className='data-search-i'>
@@ -15,7 +15,7 @@ export const DataSearch = (props) => (
           </span>
         </div>
       </Link>
-      <Link to={`/apps/conversion/search`}>
+      <Link to={`/conversion/search`}>
         <div className='data-search-item'>
           <span className='data-search-title'>数据查询2</span>
           <span className='data-search-i'>

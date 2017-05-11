@@ -23,6 +23,11 @@ const config = {
   dir_test   : 'tests',
 
   // ----------------------------------
+  // Mock Configuration
+  // ----------------------------------
+  compiler_mock_route: '/mock',
+
+  // ----------------------------------
   // Server Configuration
   // ----------------------------------
   server_host : ip.address(), // use string 'localhost' to prevent exposure on local network

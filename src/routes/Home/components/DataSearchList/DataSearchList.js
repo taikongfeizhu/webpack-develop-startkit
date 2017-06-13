@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router'
-import { Icon } from 'antd-mobile'
 import DataImage from './assets/search.png'
 import InfoImage from './assets/info.png'
 import './DataSearchList.less'
@@ -13,9 +12,6 @@ const SearchItem = (props) => (
         src={props.img}
       />
       <span className='search-item-name'>{props.title}</span>
-      <span className='search-item-ico'>
-        <Icon type='right' size='md' />
-      </span>
     </Link>
   </div>
 )

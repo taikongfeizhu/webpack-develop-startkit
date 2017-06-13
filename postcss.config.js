@@ -1,8 +1,3 @@
-module.exports = {
-  plugins: [
-    require('postcss-pxtorem')({
-      rootValue: 100,
-      propWhiteList: []
-    })
-  ]
-}
+/**
+ * Created by huangjian on 2017/6/13.
+ */

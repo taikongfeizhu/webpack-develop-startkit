@@ -16,16 +16,13 @@ const config = {
   // ----------------------------------
   path_base  : path.resolve(__dirname, '..'),
   dir_client : 'src',
+  node_modules : 'node_modules',
   dir_dist   : 'output/resource/os_mobile',
   dir_template : 'output/template/os_mobile',
   dir_public : 'public',
   dir_server : 'server',
   dir_test   : 'tests',
-
-  // ----------------------------------
-  // Mock Configuration
-  // ----------------------------------
-  compiler_mock_route: '/mock',
+  postcss_sourcemap: false,
 
   // ----------------------------------
   // Server Configuration
@@ -39,13 +36,14 @@ const config = {
   compiler_babel : {
     cacheDirectory : true,
     plugins        : ['transform-runtime'],
-    presets        : [[ 'es2015', { modules: false } ], 'react', 'stage-0']
+    presets        : [[ 'es2015', { modules: false, loose: true } ], 'react', 'stage-0']
   },
   compiler_devtool         : 'source-map',
   compiler_hash_type       : 'hash',
   compiler_fail_on_warning : false,
   compiler_quiet           : false,
   compiler_public_path     : '/resource/os_mobile',
+  compiler_mock_route      : '/mock',
   compiler_stats           : {
     chunks : false,
     chunkModules : false,
@@ -53,11 +51,15 @@ const config = {
   },
   compiler_vendors : [
     'react',
-    'react-redux',
+    'react-dom',
     'react-router',
+    'history',
     'redux',
+    'react-redux',
+    'immutable',
     'rc-form',
-    'lodash'
+    'lodash',
+    'isomorphic-fetch'
   ],
 
   // ----------------------------------
@@ -121,6 +123,7 @@ function base () {
 
 config.paths = {
   base   : base,
+  node_modules : base.bind(null, config.node_modules),
   client : base.bind(null, config.dir_client),
   public : base.bind(null, config.dir_public),
   dist   : base.bind(null, config.dir_dist),

@@ -1,5 +1,4 @@
 import fetch from 'isomorphic-fetch'
-import { Toast } from 'antd-mobile'
 
 /**
  * 检查接口响应状态码
@@ -57,9 +56,9 @@ function handleError (e) {
   if (!e.response) {
     // 断网情况
     e.message = '断网啦'
-    Toast.offline(e.message)
+    alert(e.message)
   } else {
-    Toast.fail(e.message)
+    alert(e.message)
   }
   throw e
 }

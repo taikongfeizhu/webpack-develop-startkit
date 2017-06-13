@@ -25,11 +25,12 @@ module.exports = {
   // cdn public_path: //s3a.pstatp.com/cg_growth/resource/os_mobile/
   // ======================================================
   production : (config) => ({
-    compiler_public_path     : publishPath.server,
+    compiler_public_path     : publishPath.cdn,
     compiler_base_route      : '/apps/',
     compiler_fail_on_warning : false,
     compiler_hash_type       : 'chunkhash',
     compiler_devtool         : false,
+    postcss_sourcemap        : false,
     compiler_stats           : {
       chunks       : true,
       chunkModules : true,

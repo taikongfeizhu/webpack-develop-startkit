@@ -1,7 +1,7 @@
 import { take, put, call } from 'redux-saga/effects'
 import Immutable from 'immutable'
 import fetchAPI from 'api'
-import { types, CUSTOMER_STATUS, RECHARGE_TYPE } from 'api/config'
+import { types, CUSTOMER_STATUS } from 'api/config'
 
 // ------------------------------------
 // Constants
@@ -62,15 +62,12 @@ export default function opportunity (state = initialState, action) {
 export function *fetchHomeData (type, body) {
   while (true) {
     const { payload } = yield take(REQUEST_HOME_DATA)
-    const [ customerNum, untracks, trackings, num, amount ] = yield [
+    const [ customerNum, untracks ] = yield [
       call(fetchAPI, types.getCustomerNum, payload.dashboard),
-      call(fetchAPI, types.getCustomers, payload.list + `&status=${CUSTOMER_STATUS.UNTRACK}`),
-      call(fetchAPI, types.getCustomers, payload.list + `&status=${CUSTOMER_STATUS.TRACKING}`),
-      call(fetchAPI, types.getRechargeData, payload.dashboard + `&type=${RECHARGE_TYPE.NUM}`),
-      call(fetchAPI, types.getRechargeData, payload.dashboard + `&type=${RECHARGE_TYPE.AMOUNT}`)
+      call(fetchAPI, types.getCustomers, payload.list + `&status=${CUSTOMER_STATUS.UNTRACK}`)
     ]
 
-    yield put(addHomeData({ customerNum, untracks, trackings, num, amount }))
+    yield put(addHomeData({ customerNum, untracks }))
   }
 }
 

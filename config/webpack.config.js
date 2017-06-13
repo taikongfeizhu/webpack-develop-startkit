@@ -1,11 +1,10 @@
 const argv = require('yargs').argv
 const os = require('os')
 const webpack = require('webpack')
-const project = require('./project.config')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const UglifyJsParallelPlugin = require('webpack-uglify-parallel')
-const Visualizer = require('webpack-visualizer-plugin')
+const project = require('./project.config')
 const debug = require('debug')('app:config:webpack')
 
 const __DEV__ = project.globals.__DEV__
@@ -108,16 +107,12 @@ if (__DEV__) {
     new UglifyJsParallelPlugin({
       workers: os.cpus().length,
       mangle: true,
+      sourceMap: false,
       compressor: {
         warnings: false,
         drop_debugger: true,
         dead_code: true
       }
-    })
-  )
-  webpackConfig.plugins.push(
-    new Visualizer({
-      filename: 'visualizer.html'
     })
   )
 }
@@ -148,14 +143,10 @@ webpackConfig.module.rules = [{
   query   : project.compiler_babel
 }]
 
-const svgDirs = [
-  require.resolve('antd-mobile').replace(/warn\.js$/, '') // 1. 属于 antd-mobile 内置 svg 文件
-]
 webpackConfig.module.rules.push({
   test: /\.(svg)$/i,
   // exclude : null,
-  loader: 'svg-sprite-loader',
-  include: svgDirs
+  loader: 'svg-sprite-loader'
 })
 
 // ------------------------------------
@@ -180,10 +171,6 @@ const POSTCSS = [
     reduceIdents: false,
     safe: true,
     sourcemap: true
-  }),
-  require('postcss-pxtorem')({
-    rootValue: 100,
-    propWhiteList: []
   })
 ]
 
@@ -198,7 +185,7 @@ webpackConfig.module.rules.push({
         plugins: function () {
           return POSTCSS
         },
-        sourceMap: 'inline'
+        sourceMap: project.postcss_sourcemap
       }
     },
     {
@@ -219,7 +206,7 @@ webpackConfig.module.rules.push({
         plugins: function () {
           return POSTCSS
         },
-        sourceMap: 'inline'
+        sourceMap: project.postcss_sourcemap
       }
     }
   ]
@@ -258,38 +245,27 @@ webpackConfig.module.rules.push(
 if (!__DEV__) {
   debug('Applying ExtractTextPlugin to CSS loaders.')
   webpackConfig.module.rules.filter(
-      (rule) => {
-        let bool = rule.use && rule.use.find((name) => {
-          if (Object.prototype.toString.call(name) === '[object Object]') {
-            name = name.loader
-          }
-          return /css-loader/.test(name.split('?')[0])
-        })
-        return bool
-      }
+    (rule) => {
+      let bool = rule.use && rule.use.find((name) => {
+        if (Object.prototype.toString.call(name) === '[object Object]') {
+          name = name.loader
+        }
+        return /css-loader/.test(name.split('?')[0])
+      })
+      return bool
+    }
   ).forEach((rule) => {
-    let loaders = []
-    rule.use.forEach((use) => {
-      if (Object.prototype.toString.call(use) === '[object Object]') {
-        loaders.push(use.loader)
-      } else {
-        loaders.push(use)
-      }
+    rule.use = ExtractTextPlugin.extract({
+      fallback: 'style-loader',
+      use: rule.use.slice(1)
     })
-    const first = loaders[0]
-    const rest = loaders.slice(1)
-    rule.loader = ExtractTextPlugin.extract({
-      fallback: first,
-      use: rest.join('!')
-    })
-    delete rule.use
   })
 
   webpackConfig.plugins.push(
-      new ExtractTextPlugin({
-        filename: `css/[name].[contenthash].css`,
-        allChunks: true
-      })
+    new ExtractTextPlugin({
+      filename: `css/[name].[contenthash].css`,
+      allChunks: true
+    })
   )
 }
 

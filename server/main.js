@@ -1,6 +1,7 @@
 const express = require('express')
 const debug = require('debug')('app:server')
 const path = require('path')
+const opn = require('opn')
 const ejs = require('ejs')
 const routes = require('./routes')
 const webpack = require('webpack')
@@ -11,9 +12,9 @@ const proxy = require('http-proxy-middleware')
 const bodyParser = require('body-parser')
 const querystring = require('querystring')
 const proxyConfig = require('./proxy.config')
-const mock = require('./routes/mock')
 
 const app = express()
+const localServer = `http://127.0.0.1:${project.server_port}`
 
 // view engine setup
 // app.set('views', path.join(__dirname, 'views'))
@@ -37,7 +38,8 @@ const createProxySetting = function (url) {
     changeOrigin: true,
     headers: {
       Accept: 'application/json',
-      'X-Requested-With': 'XMLHttpRequest'
+      'X-Requested-With': 'XMLHttpRequest',
+      'Cookies': 'mersea-session=50aa083b-b6a1-4e9f-bfd8-9e4a160e49e9'
     },
     onProxyReq: function (proxyReq, req) {
       if (req.method === 'POST' && req.body) {
@@ -53,9 +55,7 @@ const createProxySetting = function (url) {
 // ------------------------------------
 if (project.env === 'development') {
   const compiler = webpack(webpackConfig)
-
-  debug('Enabling webpack dev and HMR middleware')
-  app.use(require('webpack-dev-middleware')(compiler, {
+  const devMiddleware = require('webpack-dev-middleware')(compiler, {
     publicPath  : webpackConfig.output.publicPath,
     contentBase : project.paths.client(),
     hot         : true,
@@ -63,7 +63,9 @@ if (project.env === 'development') {
     noInfo      : project.compiler_quiet,
     lazy        : false,
     stats       : project.compiler_stats
-  }))
+  })
+  debug('Enabling webpack dev and HMR middleware')
+  app.use(devMiddleware)
   app.use(require('webpack-hot-middleware')(compiler, {
     path: '/__webpack_hmr'
   }))
@@ -72,9 +74,6 @@ if (project.env === 'development') {
   proxyConfig.forEach(function (item) {
     app.use(item.url, proxy(createProxySetting(item.target)))
   })
-
-  // mock routes
-  app.use(project.compiler_mock_route, mock)
 
   // Serve static assets from ~/public since Webpack is unaware of
   // these files. This middleware doesn't need to be enabled outside
@@ -85,6 +84,7 @@ if (project.env === 'development') {
   // This rewrites all routes requests to the root /index.html file
   // (ignoring file requests). If you want to implement universal
   // rendering, you'll want to remove this middleware.
+
   app.use('*', function (req, res, next) {
     const filename = path.join(compiler.outputPath, 'index.html')
     compiler.outputFileSystem.readFile(filename, (err, result) => {
@@ -95,6 +95,13 @@ if (project.env === 'development') {
       res.send(result)
       res.end()
     })
+  })
+
+  devMiddleware.waitUntilValid(() => {
+   // when env is testing, don't need open it
+    if (project.open_browser) {
+      opn(localServer)
+    }
   })
 } else {
   debug(
@@ -114,11 +121,15 @@ if (project.env === 'development') {
     app.use(item.url, proxy(createProxySetting(item.target)))
   })
   app.use(project.compiler_public_path, express.static(project.paths.dist()))
+
   app.use(project.compiler_base_route, routes)
   app.use('*', function (req, res) {
     res.set('content-type', 'text/html')
-    res.end("<a href='http://127.0.0.1:3000/apps/'>访问os_mobile</a>")
+    res.end(`<a href=${localServer}>访问主页</a>`)
   })
+  if (project.open_browser) {
+    opn(localServer)
+  }
 }
 
 module.exports = app

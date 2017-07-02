@@ -39,7 +39,7 @@ webpackConfig.entry = {
 // Bundle Output
 // ------------------------------------
 webpackConfig.output = {
-  filename   : `js/[name].[${project.compiler_hash_type}].js`,
+  filename   : `js/[name].[${project.compiler_hash_type}]${project.compiler_timestamp}.js`,
   path       : project.paths.dist(),
   publicPath : project.compiler_public_path
 }
@@ -85,7 +85,7 @@ if (__TEST__ && !argv.watch) {
         // Pretend no assets were generated. This prevents the tests
         // from running making it clear that there were warnings.
         throw new Error(
-            stats.compilation.errors.map(err => err.message || err)
+          stats.compilation.errors.map(err => err.message || err)
         )
       }
     })
@@ -95,12 +95,11 @@ if (__TEST__ && !argv.watch) {
 if (__DEV__) {
   debug('Enabling plugins for live development (HMR, NoErrors).')
   webpackConfig.plugins.push(
-      new webpack.HotModuleReplacementPlugin()
-      // new webpack.NoErrorsPlugin()
+    new webpack.HotModuleReplacementPlugin()
+    // new webpack.NoErrorsPlugin()
   )
 } else if (__PROD__) {
   debug('Enabling plugins for production (UglifyJS).')
-
   webpackConfig.plugins.push(
     // new webpack.optimize.OccurrenceOrderPlugin(),
     // new webpack.optimize.DedupePlugin(),
@@ -215,24 +214,24 @@ webpackConfig.module.rules.push({
 // File loaders
 /* eslint-disable */
 webpackConfig.module.rules.push(
-    {
-      test: /\.woff(\?.*)?$/,
-      loader: 'url-loader?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/font-woff'
-    },
-    {
-      test: /\.woff2(\?.*)?$/,
-      loader: 'url-loader?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/font-woff2'
-    },
-    {
-      test: /\.otf(\?.*)?$/,
-      loader: 'file-loader?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=font/opentype'
-    },
-    {
-      test: /\.ttf(\?.*)?$/,
-      loader: 'url-loader?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/octet-stream'
-    },
-    {test: /\.eot(\?.*)?$/, loader: 'file-loader?prefix=fonts/&name=[path][name].[ext]'},
-    {test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192'}
+  {
+    test: /\.woff(\?.*)?$/,
+    loader: 'url-loader?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/font-woff'
+  },
+  {
+    test: /\.woff2(\?.*)?$/,
+    loader: 'url-loader?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/font-woff2'
+  },
+  {
+    test: /\.otf(\?.*)?$/,
+    loader: 'file-loader?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=font/opentype'
+  },
+  {
+    test: /\.ttf(\?.*)?$/,
+    loader: 'url-loader?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/octet-stream'
+  },
+  {test: /\.eot(\?.*)?$/, loader: 'file-loader?prefix=fonts/&name=[path][name].[ext]'},
+  {test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192'}
 )
 /* eslint-enable */
 
@@ -260,7 +259,6 @@ if (!__DEV__) {
       use: rule.use.slice(1)
     })
   })
-
   webpackConfig.plugins.push(
     new ExtractTextPlugin({
       filename: `css/[name].[contenthash].css`,

@@ -1,20 +1,26 @@
-import React from 'react'
+import React, { Component } from 'react'
 import 'static/styles/core.less'
 import './CoreLayout.less'
 import ScrollToTop from './ScrollToTop'
 
-export const CoreLayout = ({ children }) => (
-  <div className='os-container notransition'>
-    <ScrollToTop>
-      <div>
-        {children}
+class CoreLayout extends Component {
+  render () {
+    const { children } = this.props
+    return (
+      <div className='core-container notransition'>
+        <ScrollToTop>
+          <div>
+            {children}
+          </div>
+        </ScrollToTop>
       </div>
-    </ScrollToTop>
-  </div>
-)
+    )
+  }
+}
 
 CoreLayout.propTypes = {
-  children : React.PropTypes.element.isRequired
+  children: React.PropTypes.element.isRequired
 }
 
 export default CoreLayout
+

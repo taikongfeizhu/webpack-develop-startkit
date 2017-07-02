@@ -23,11 +23,12 @@ const config = {
   dir_server : 'server',
   dir_test   : 'tests',
   postcss_sourcemap: false,
+  open_browser: true,
 
   // ----------------------------------
   // Server Configuration
   // ----------------------------------
-  server_host : ip.address(), // use string 'localhost' to prevent exposure on local network
+  server_host : ip.address(), // 'http://127.0.0.1'
   server_port : process.env.PORT || 3000,
 
   // ----------------------------------
@@ -36,14 +37,14 @@ const config = {
   compiler_babel : {
     cacheDirectory : true,
     plugins        : ['transform-runtime'],
-    presets        : [[ 'es2015', { modules: false, loose: true } ], 'react', 'stage-0']
+    presets        : [[ 'es2015', { modules: false } ], 'react', 'stage-0']
   },
   compiler_devtool         : 'source-map',
-  compiler_hash_type       : 'hash',
+  compiler_timestamp       : '',
+  compiler_hash_type       : 'hash:12',
   compiler_fail_on_warning : false,
   compiler_quiet           : false,
   compiler_public_path     : '/resource/os_mobile',
-  compiler_mock_route      : '/mock',
   compiler_stats           : {
     chunks : false,
     chunkModules : false,
@@ -136,6 +137,7 @@ config.paths = {
 debug(`Looking for environment overrides for NODE_ENV "${config.env}".`)
 const environments = require('./environments.config')
 const overrides = environments[config.env]
+
 if (overrides) {
   debug('Found overrides, applying to default configuration.')
   Object.assign(config, overrides(config))

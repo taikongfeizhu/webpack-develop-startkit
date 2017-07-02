@@ -2,6 +2,9 @@
 // Supply a key to the default export matching the NODE_ENV that you wish to target, and
 // the base configuration will apply your overrides before exporting itself.
 
+const withSourceMap = process.argv.slice(2).includes('sourcemap') > 0
+const withTimestamp = process.argv.slice(2).includes('timestamp') > 0
+
 const publishPath = {
   server: '/resource/os_mobile/',
   cdn: '//s3a.pstatp.com/cg_growth/resource/os_mobile/'
@@ -20,17 +23,17 @@ module.exports = {
 
   // ======================================================
   // Overrides when NODE_ENV === 'production'
-  // mersea public_path: /static/mobile/
-  // express public_path: /resource/os_mobile/
   // cdn public_path: //s3a.pstatp.com/cg_growth/resource/os_mobile/
   // ======================================================
   production : (config) => ({
     compiler_public_path     : publishPath.cdn,
     compiler_base_route      : '/apps/',
     compiler_fail_on_warning : false,
-    compiler_hash_type       : 'chunkhash',
-    compiler_devtool         : false,
+    compiler_hash_type       : 'chunkhash:12',
+    compiler_timestamp       : withTimestamp ? `.${new Date().getTime()}` : '',
+    compiler_devtool         : withSourceMap ? 'cheap-module-inline-source-map' : false,
     postcss_sourcemap        : false,
+    open_browser             : false,
     compiler_stats           : {
       chunks       : true,
       chunkModules : true,

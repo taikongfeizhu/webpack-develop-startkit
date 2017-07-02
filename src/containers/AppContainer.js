@@ -1,6 +1,11 @@
 import React, { Component, PropTypes } from 'react'
 import { browserHistory, Router } from 'react-router'
+import { syncHistoryWithStore } from 'react-router-redux'
+import withBasename from 'until/withBasename'
 import { Provider } from 'react-redux'
+
+const baseName = ''
+
 class AppContainer extends Component {
   static propTypes = {
     routes : PropTypes.object.isRequired,
@@ -17,11 +22,11 @@ class AppContainer extends Component {
 
   render () {
     const { routes, store } = this.props
-
+    const history = syncHistoryWithStore(browserHistory, store)
     return (
       <Provider store={store}>
-        <div style={{ height: '100%' }}>
-          <Router history={browserHistory} children={routes} />
+        <div>
+          <Router history={withBasename(history, baseName)} children={routes} />
         </div>
       </Provider>
     )

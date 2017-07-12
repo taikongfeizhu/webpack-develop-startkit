@@ -125,7 +125,7 @@ if (project.env === 'development') {
   app.use(project.compiler_base_route, routes)
   app.use('*', function (req, res) {
     res.set('content-type', 'text/html')
-    res.end(`<a href=${localServer}>访问主页</a>`)
+    res.end(`<a href=${localServer}>访问os_mobile</a>`)
   })
   if (project.open_browser) {
     opn(localServer)

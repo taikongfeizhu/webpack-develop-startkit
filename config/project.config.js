@@ -2,7 +2,7 @@
 const path = require('path')
 const debug = require('debug')('app:config:project')
 const argv = require('yargs').argv
-const ip = require('ip')
+// const ip = require('ip')
 
 debug('Creating default configuration.')
 // ========================================================
@@ -27,8 +27,9 @@ const config = {
 
   // ----------------------------------
   // Server Configuration
+  // ip.address()
   // ----------------------------------
-  server_host : ip.address(), // 'http://127.0.0.1'
+  server_host : '127.0.0.1',
   server_port : process.env.PORT || 3000,
 
   // ----------------------------------

@@ -2,6 +2,7 @@ import React from 'react'
 import moment from 'moment'
 import { Link } from 'react-router'
 import { Button, Row, Col, Card } from 'antd'
+import ControlPanel from './Page/ControlPanel'
 import './HomeView.less'
 
 const EnumPostStatus = {
@@ -84,6 +85,7 @@ class HomeView extends React.Component {
             <Button onClick={(e) => { this.handleCHangeRouter(e, 'PUBLISHED') }}>Router2</Button>
           </Col>
         </Row>
+        <ControlPanel />
       </div>
     )
   }

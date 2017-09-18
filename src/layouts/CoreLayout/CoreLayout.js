@@ -25,19 +25,20 @@ class CoreLayout extends Component {
 
   render () {
     const { location:{ pathname }, children, router, routes } = this.props
+    const { collapsed } = this.state
     return (
       <Layout className='ant-layout-has-sider'>
-        <SiderCustom path={pathname} collapsed={this.state.collapsed} toggle={this.toggle} />
+        <SiderCustom path={pathname} collapsed={collapsed} toggle={this.toggle} />
         <Layout>
           <HeaderCustom toggle={this.toggle} user={{}} router={router}
-            path={pathname} />
+            path={pathname} collapsed={collapsed} />
           <Content style={{ margin: '0 16px', overflow: 'initial' }}>
             <Breadcrumb routes={routes} />
             <div className='ant-layout-container'>
               {children}
             </div>
           </Content>
-          <Footer style={{ textAlign: 'center' }}>
+          <Footer className='footer'>
             React-Admin ©2017 Created
           </Footer>
         </Layout>

@@ -32,7 +32,7 @@ class HeaderCustom extends Component {
       <Header style={{ background: '#fff', padding: 0, height: 60 }} className='custom-theme' >
         <Icon
           className='trigger custom-trigger'
-          type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
+          type={this.props.collapsed ? 'menu-unfold' : 'menu-fold'}
           onClick={this.props.toggle}
         />
         <Menu
@@ -67,6 +67,7 @@ class HeaderCustom extends Component {
 
 HeaderCustom.propTypes = {
   toggle: PropTypes.func.isRequired,
+  collapsed: PropTypes.bool.isRequired,
   user: PropTypes.object.isRequired,
   router: PropTypes.object.isRequired
 }

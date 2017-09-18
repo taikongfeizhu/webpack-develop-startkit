@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router'
 import globalConfig from 'config.js'
 import PropTypes from 'prop-types'
 import './index.less'
@@ -13,7 +14,9 @@ class Logo extends React.PureComponent {
       <div className={this.props.collapsed ? 'ant-layout-logo-collapse' : 'ant-layout-logo-normal'}>
         <div className='ant-layout-logo-text'>
           {/* 侧边栏折叠的时候只显示一个字 */}
-          <a href='#'>{this.props.collapsed ? globalConfig.name[0] : globalConfig.name}</a>
+          <Link to={globalConfig.baseRoute} style={{ display: 'inline' }}>
+            {this.props.collapsed ? globalConfig.name[0] : globalConfig.name}
+          </Link>
         </div>
       </div>
     )

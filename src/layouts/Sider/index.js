@@ -64,7 +64,9 @@ class SiderCustom extends PureComponent {
         {obj.icon && <Icon type={obj.icon} />}
         {/* 对于level1的菜单项, 如果没有图标, 取第一个字用于折叠时显示 */}
         {isLevel1 && !obj.icon && <span className='invisible-nav-text'>{obj.name[0]}</span>}
-        <Link to={`/${parentPath}`} style={{ display: 'inline' }}><span className='nav-text'>{obj.name}</span></Link>
+        <Link to={`/${parentPath}`} style={{ display: 'inline' }}>
+          <span className='nav-text'>{obj.name}</span>
+        </Link>
       </MenuItem>
     )
   }

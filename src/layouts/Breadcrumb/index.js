@@ -1,8 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Breadcrumb, Icon } from 'antd'
+import { Link } from 'react-router'
 import sidebarMenu, { headerMenu } from 'menu'
 import Logger from 'until/Logger'
+import globalConfig from 'config.js'
 import './index.less'
 
 const Item = Breadcrumb.Item
@@ -52,7 +54,14 @@ class Bread extends React.PureComponent {
     const itemArray = []
 
     // 面包屑导航的最开始都是一个home图标, 并且这个图标是可以点击的
-    itemArray.push(<Item key='systemHome' href='#'><Icon type='home' /> 首页</Item>)
+    itemArray.push(
+      <Item key='systemHome'>
+        <Icon type='home' />&nbsp;
+        <Link to={globalConfig.baseRoute}>
+          首页
+        </Link>
+      </Item>
+    )
 
     // this.props.routes是react-router传进来的
     for (const route of this.props.routes) {

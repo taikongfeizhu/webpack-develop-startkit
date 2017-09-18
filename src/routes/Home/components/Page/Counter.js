@@ -46,10 +46,6 @@ class Counter extends Component {
     store.subscribe(this.onChange)
   }
 
-  componentWillUnmount () {
-    store.unsubscribe(this.onChange)
-  }
-
   render () {
     const value = this.state.value
     const { caption } = this.props

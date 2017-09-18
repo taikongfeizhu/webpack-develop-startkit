@@ -14,7 +14,7 @@ const querystring = require('querystring')
 const proxyConfig = require('./proxy.config')
 
 const app = express()
-const localServer = `http://127.0.0.1:${project.server_port}`
+const localServer = `http://127.0.0.1:${project.server_port}/apps/`
 
 // view engine setup
 // app.set('views', path.join(__dirname, 'views'))

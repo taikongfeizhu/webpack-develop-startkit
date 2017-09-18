@@ -1,4 +1,3 @@
-import _ from 'lodash'
 import moment from 'moment'
 
 export function formatTrackingDate (date, format = 'YYYY/MM/DD HH:mm') {
@@ -13,29 +12,21 @@ export function formatRemainTime (time, format = 'MM/DD') {
   return moment().seconds(parseInt(time)).format(format)
 }
 
-export function formatCustomerData (list, track) {
-  if (!_.isArray(list) || !list.length) {
-    return []
-  }
-  const result = []
-  _.map(list, (o) => {
-    if (track) {
-      result.push({
-        id: o.id,
-        time: moment(o.visit_time).isValid() && moment(o.visit_time).format('MM/DD HH:mm') || '暂无跟进计划',
-        remain_time: moment(o.remain_time).isValid() && formatRemainTime(o.remain_time),
-        name: o.name,
-        type: o.type ? o.type + ' ' : ''
-      })
+// 获取url的参数
+export const queryString = () => {
+  let _queryString = {}
+  const _query = window.location.search.substr(1)
+  const _vars = _query.split('&')
+  _vars.forEach((v, i) => {
+    const _pair = v.split('=')
+    if (!_queryString.hasOwnProperty(_pair[0])) {
+      _queryString[_pair[0]] = decodeURIComponent(_pair[1])
+    } else if (typeof _queryString[_pair[0]] === 'string') {
+      const _arr = [_queryString[_pair[0]], decodeURIComponent(_pair[1])]
+      _queryString[_pair[0]] = _arr
     } else {
-      result.push({
-        id: o.id,
-        time: moment(o.os_claimed_time).isValid() && moment(o.os_claimed_time).format('MM/DD HH:mm') || '暂无跟进计划',
-        remain_time: moment(o.remain_time).isValid() && formatRemainTime(o.remain_time),
-        name: o.name,
-        type: ''
-      })
+      _queryString[_pair[0]].push(decodeURIComponent(_pair[1]))
     }
   })
-  return result
+  return _queryString
 }

@@ -10,7 +10,6 @@ const debug = require('debug')('app:config:webpack')
 const __DEV__ = project.globals.__DEV__
 const __PROD__ = project.globals.__PROD__
 const __TEST__ = project.globals.__TEST__
-const FILENAME = project.globals.filename
 
 debug('Creating configuration.')
 const webpackConfig = {
@@ -26,7 +25,7 @@ const webpackConfig = {
 // ------------------------------------
 // Entry Points
 // ------------------------------------
-const APP_ENTRY = project.paths.client('main.js')
+const APP_ENTRY = project.paths.client('index.js')
 
 webpackConfig.entry = {
   app : __DEV__
@@ -66,7 +65,7 @@ webpackConfig.plugins = [
     template: project.paths.client('index.html'),
     hash: false,
     favicon: project.paths.public('favicon.ico'),
-    filename: __DEV__ ? 'index.html' : project.paths.template(FILENAME),
+    filename: 'index.html',
     inject: 'body',
     minify: {
       collapseWhitespace: true,

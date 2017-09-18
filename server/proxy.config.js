@@ -1,4 +1,4 @@
-const domain = 'https://mersea-test.bytedance.net'
+const domain = 'http://127.0.0.1:3000'
 const proxy = [
   {
     url: '/opportunity/*',

@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "compile": "better-npm-run compile",
-    "lint": "eslint bin build config server src tests",
+    "lint": "eslint bin build config server src tests --ext .jsx,.js",
     "lint:fix": "npm run lint -- --fix",
     "start": "better-npm-run start",
     "electron": "better-npm-run electron",
@@ -91,7 +91,7 @@
     "webpack2-react-redux-starter"
   ],
   "devDependencies": {
-    "antd": "^2.11.2",
+    "antd": "^2.13.1",
     "babel-core": "^6.21.0",
     "babel-eslint": "^7.1.1",
     "babel-loader": "^6.2.10",
@@ -184,6 +184,7 @@
     "nprogress": "^0.2.0",
     "opn": "^5.1.0",
     "path-to-regexp": "^1.7.0",
+    "prop-types": "^15.5.10",
     "querystring": "^0.2.0",
     "raf": "^3.3.0",
     "rc-form": "^1.3.0",
@@ -196,7 +197,6 @@
     "react-router-redux": "~4.0.8",
     "redux": "^3.6.0",
     "redux-saga": "^0.14.3",
-    "request": "^2.81.0",
     "shallowequal": "^0.2.2",
     "webpack": "^2.2.1",
     "webpack-uglify-parallel": "^0.1.3",

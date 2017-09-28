@@ -36,11 +36,9 @@ const config = {
   // Compiler Configuration
   // ----------------------------------
   compiler_babel : {
-    cacheDirectory : true,
-    plugins        : ['transform-runtime'],
-    presets        : [[ 'es2015', { modules: false } ], 'react', 'stage-0']
+    cacheDirectory : true
   },
-  compiler_devtool         : 'source-map',
+  compiler_devtool         : 'cheap-eval-source-map',
   compiler_timestamp       : '',
   compiler_hash_type       : 'hash:12',
   compiler_fail_on_warning : false,
@@ -61,7 +59,8 @@ const config = {
     'immutable',
     'rc-form',
     'lodash',
-    'isomorphic-fetch'
+    'isomorphic-fetch',
+    path.resolve(__dirname, '../node_modules/antd/dist', 'antd.less')
   ],
 
   // ----------------------------------

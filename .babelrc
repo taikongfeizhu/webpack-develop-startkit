@@ -1,4 +1,16 @@
 {
+  "presets": [
+    [
+      "env",
+      {
+        "modules": false,
+        "targets": {
+          "browsers": ["last 2 versions", "safari 7"]
+        }
+      }
+    ],
+    "react", "stage-1"
+  ],
   "plugins": [
     [
       "import",

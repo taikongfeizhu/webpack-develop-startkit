@@ -2,6 +2,7 @@
 import CoreLayout from '../layouts/CoreLayout'
 import Home from './Home'
 import DataSearch from './DataSearch'
+import Charts from './Charts'
 import NotFound from './NotFound'
 /*  Note: Instead of using JSX, we recommend using react-router
     PlainRoute objects to build route definitions.   */
@@ -12,6 +13,7 @@ export const createRoutes = (store) => ({
   indexRoute  : Home(store),
   childRoutes : [
     DataSearch,
+    Charts(store),
     NotFound
   ]
 })

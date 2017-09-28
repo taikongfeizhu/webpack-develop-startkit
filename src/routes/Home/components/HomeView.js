@@ -1,5 +1,6 @@
 import React from 'react'
 import moment from 'moment'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router'
 import { Button, Row, Col, Card } from 'antd'
 import './HomeView.less'
@@ -39,8 +40,8 @@ class HomeView extends React.Component {
     const { location, params } = this.props
     console.log(params)
     return (
-      <div className='home-container'>
-        <Card title='Location Demo'>
+      <div className='gutter-example'>
+        <Card>
           <Row>
             <Col span={3}>action:</Col>
             <Col span={8}>{location.action}</Col>
@@ -57,42 +58,42 @@ class HomeView extends React.Component {
             <Col span={3}>query:</Col>
             <Col span={8}>{JSON.stringify(location.query)}</Col>
           </Row>
+          <Row className='link-box'>
+            <Col span={10}>Link Demo:</Col>
+            <Col span={7}>
+              <Link to={{
+                pathname: '/apps/',
+                state: { fromInside: true },
+                query: { status: EnumPostStatus.UNPUBLISH }
+              }}>status1</Link>
+            </Col>
+            <Col span={7}>
+              <Link to={{
+                pathname: '/apps/',
+                state: { fromInside: false },
+                query: { status: EnumPostStatus.PUBLISHED }
+              }}>status2</Link>
+            </Col>
+          </Row>
+          <Row className='link-box'>
+            <Col span={10}>Router Demo:</Col>
+            <Col span={7}>
+              <Button onClick={(e) => { this.handleCHangeRouter(e, 'UNPUBLISH') }}>Router1</Button>
+            </Col>
+            <Col span={7}>
+              <Button onClick={(e) => { this.handleCHangeRouter(e, 'PUBLISHED') }}>Router2</Button>
+            </Col>
+          </Row>
         </Card>
-        <Row className='link-box'>
-          <Col span={10}>Link Demo:</Col>
-          <Col span={7}>
-            <Link to={{
-              pathname: '/apps/',
-              state: { fromInside: true },
-              query: { status: EnumPostStatus.UNPUBLISH }
-            }}>status1</Link>
-          </Col>
-          <Col span={7}>
-            <Link to={{
-              pathname: '/apps/',
-              state: { fromInside: false },
-              query: { status: EnumPostStatus.PUBLISHED }
-            }}>status2</Link>
-          </Col>
-        </Row>
-        <Row className='link-box'>
-          <Col span={10}>Router Demo:</Col>
-          <Col span={7}>
-            <Button onClick={(e) => { this.handleCHangeRouter(e, 'UNPUBLISH') }}>Router1</Button>
-          </Col>
-          <Col span={7}>
-            <Button onClick={(e) => { this.handleCHangeRouter(e, 'PUBLISHED') }}>Router2</Button>
-          </Col>
-        </Row>
       </div>
     )
   }
 }
 
 HomeView.propTypes = {
-  location: React.PropTypes.object,
-  params: React.PropTypes.object,
-  router: React.PropTypes.object
+  location: PropTypes.object,
+  params: PropTypes.object,
+  router: PropTypes.object
 }
 
 export default HomeView

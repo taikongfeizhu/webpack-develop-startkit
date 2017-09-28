@@ -23,8 +23,8 @@ const sidebarMenu = [
         icon: 'play-circle'   // 二级三级菜单也可以带图标
       },
       {
-        key: 'dataSearch2',
-        name: '图片DEMO',
+        key: 'charts',
+        name: '图表示例',
         icon: 'android'
       },
       {

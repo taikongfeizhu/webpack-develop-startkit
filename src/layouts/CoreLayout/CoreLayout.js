@@ -15,9 +15,10 @@ class CoreLayout extends Component {
     this.state = {
       collapsed: false
     }
+    this.toggle = this.toggle.bind(this)
   }
 
-  toggle = () => {
+  toggle () {
     this.setState({
       collapsed: !this.state.collapsed
     })

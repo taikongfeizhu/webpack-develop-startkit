@@ -2,7 +2,7 @@
  * Created by hao.cheng on 2017/4/15.
  */
 import React from 'react'
-import { Table, Icon } from 'antd'
+import { Table, Icon, Card } from 'antd'
 
 const columns = [{
   title: 'Name',
@@ -51,7 +51,9 @@ const data = [{
 }]
 
 const BasicTable = () => (
-  <Table columns={columns} dataSource={data} />
+  <Card title='基础线形图' bordered={false}>
+    <Table columns={columns} dataSource={data} />
+  </Card>
 )
 
 export default BasicTable

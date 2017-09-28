@@ -53,14 +53,13 @@ const config = {
     'react',
     'react-dom',
     'react-router',
-    'history',
     'redux',
+    'redux-saga',
+    'history',
     'react-redux',
     'immutable',
-    'rc-form',
     'lodash',
-    'isomorphic-fetch',
-    path.resolve(__dirname, '../node_modules/antd/dist', 'antd.less')
+    'isomorphic-fetch'
   ],
 
   // ----------------------------------

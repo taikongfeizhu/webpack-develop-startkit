@@ -2,23 +2,6 @@ import globalConfig from '../config'
 
 /**
  * 日志工具类 <br/>
- *
- * <p>
- * 工程变大之后, 日志就很重要了, 总不能一直console.log.
- * 本来想看看有没有现成的工具, 找到一个log4js的库, 但只能用在node环境下, 浏览器环境下似乎没什么好用的.
- * 作为一个用惯了slf4j的人, 干脆自己写个吧, 练练手.
- * 目前有以下功能:
- *   <ul>
- *       <li>支持常用的日志级别: debug/info/warn/error, 说实话其他的级别极少用到</li>
- *       <li>支持变量替换: 类似slf4j中的logger.info("a={}",a)这种, 其实console本身已经支持的</li>
- *       <li>根据日志级别设置样式: debug是黑色, info是默认, warn是黄色, error是红色, 看起来清晰很多</li>
- *       <li>定义每个logger的名字: 也算是常规功能了吧</li>
- *   </ul>
- * 我是尽量按着slf4j的习惯来设计的, 目前还比较简单.
- * 不支持pattern/appender之类的, 但对于二手前端来说, 也算够用了.
- *
- * 关于变量替换, 参考: https://developers.google.com/web/tools/chrome-devtools/console/console-write#_8
- * </p>
  */
 class Logger {
 

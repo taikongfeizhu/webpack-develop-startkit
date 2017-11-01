@@ -64,6 +64,7 @@ webpackConfig.plugins = [
   new HtmlWebpackPlugin({
     template: project.paths.client('index.html'),
     hash: false,
+    version: '1.0',
     favicon: project.paths.public('favicon.ico'),
     filename: 'index.html',
     inject: 'body',
@@ -100,8 +101,7 @@ if (__DEV__) {
 } else if (__PROD__) {
   debug('Enabling plugins for production (UglifyJS).')
   webpackConfig.plugins.push(
-    // new webpack.optimize.OccurrenceOrderPlugin(),
-    // new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.ModuleConcatenationPlugin(),
     new UglifyJsParallelPlugin({
       workers: os.cpus().length,
       mangle: true,

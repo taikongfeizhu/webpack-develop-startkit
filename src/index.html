@@ -89,16 +89,21 @@
       border-top-color: #dfb81c;
       animation: spin 1.5s linear infinite;
       /* Chrome, Firefox 16+, IE 10+, Opera */
-    }   
+    }
   </style>
 </head>
 <body>
+  <h2>we:<%=htmlWebpackPlugin.options.version%></h2>
   <div id="root" style="height: 100%; display: none;"></div>
     <div id="preloader">
-    <div>    
+    <div>
     </div>
   </div>
   <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.js"></script>
   <script src='https://ad.toutiao.com/static/ad/js/common/cityUtil.js'></script>
+  <script>
+    var env = '<%=htmlWebpackPlugin.options.version%>'
+    console.log(env)
+  </script>
 </body>
 </html>

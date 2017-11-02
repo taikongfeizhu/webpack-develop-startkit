@@ -6,6 +6,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const UglifyJsParallelPlugin = require('webpack-uglify-parallel')
 const project = require('./project.config')
 const debug = require('debug')('app:config:webpack')
+const packConfig = require('../package')
 
 const __DEV__ = project.globals.__DEV__
 const __PROD__ = project.globals.__PROD__
@@ -64,7 +65,7 @@ webpackConfig.plugins = [
   new HtmlWebpackPlugin({
     template: project.paths.client('index.html'),
     hash: false,
-    version: '1.0',
+    version: packConfig.version,
     favicon: project.paths.public('favicon.ico'),
     filename: 'index.html',
     inject: 'body',

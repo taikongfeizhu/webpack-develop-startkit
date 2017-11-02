@@ -4,7 +4,7 @@ import { Layout, Menu, Icon } from 'antd'
 import { Link } from 'react-router'
 import Logger from 'until/Logger'
 import Logo from '../Logo'
-import items from 'menu.js'  // 由于webpack中的设置, 不用写完整路径
+import items from 'menu.js'
 import globalConfig from 'config.js'
 
 import './menu.less'
@@ -33,7 +33,6 @@ class SiderCustom extends PureComponent {
   }
 
   componentWillReceiveProps (nextProps) {
-    console.log(nextProps)
     this.onCollapse(nextProps.collapsed)
     this.setMenuOpen(nextProps)
   }
@@ -48,7 +47,6 @@ class SiderCustom extends PureComponent {
   }
 
   onCollapse = (collapsed) => {
-    console.log(collapsed)
     this.setState({
       collapsed,
       firstHide: collapsed,
@@ -105,10 +103,10 @@ class SiderCustom extends PureComponent {
             return (
               <SubMenu key={level2.key}
                 title={level2.icon
-                         ? <span className='nav-text'>
-                           <Icon type={level2.icon} />
-                           {level2.name}
-                         </span> : <span className='nav-text'>level2.name</span>}>
+                  ? <span className='nav-text'>
+                    <Icon type={level2.icon} />
+                    {level2.name}
+                  </span> : <span className='nav-text'>level2.name</span>}>
                 {level3menu}
               </SubMenu>
             )
@@ -173,7 +171,6 @@ class SiderCustom extends PureComponent {
       }
     }
     newOpenKeys.push(lastKey)
-
     logger.debug('new open keys: %o', newOpenKeys)
     this.setState({ openKeys: newOpenKeys })
   }

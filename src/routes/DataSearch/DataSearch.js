@@ -51,7 +51,7 @@ const data = [{
 }]
 
 const BasicTable = () => (
-  <Card title='基础线形图' bordered={false}>
+  <Card title='表格操作' bordered={false}>
     <Table columns={columns} dataSource={data} />
   </Card>
 )

@@ -58,7 +58,7 @@ module.exports = {
 
   sidebar: {  // 侧边栏相关配置
     collapsible: true,  // 是否显示折叠侧边栏的按钮
-    autoMenuSwitch: true  // 只展开一个顶级菜单, 其他顶级菜单自动折叠
+    autoMenuSwitch: false  // 只展开一个顶级菜单, 其他顶级菜单自动折叠
   },
 
   DBTable: {  // DBTable组件相关配置

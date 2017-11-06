@@ -4,8 +4,8 @@ import { Layout, Menu, Icon } from 'antd'
 import { Link } from 'react-router'
 import Logger from 'until/Logger'
 import Logo from '../Logo'
-import items from 'menu.js'
-import globalConfig from 'config.js'
+import items from 'menu'
+import globalConfig from 'config'
 
 import './menu.less'
 

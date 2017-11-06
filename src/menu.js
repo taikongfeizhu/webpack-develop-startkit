@@ -13,31 +13,28 @@
 // 定义siderbar菜单
 const sidebarMenu = [
   {
-    key: 'apps',  // route时url中的值
-    name: '菜单哈哈哈',  // 在菜单中显示的名称
+    key: 'grid',  // route时url中的值
+    name: '表格操作',  // 在菜单中显示的名称
     icon: 'smile',  // 图标是可选的
     child: [
       {
-        key: 'dataSearch',
+        key: 'curd',
         name: '模拟CRUD',
         icon: 'play-circle'   // 二级三级菜单也可以带图标
-      },
-      {
-        key: 'charts',
-        name: '图表示例',
-        icon: 'android'
-      },
-      {
-        key: 'dataSearch3',
-        name: '自定义操作',
-        icon: 'bulb'
       }
     ]
   },
   {
-    key: 'alone',
-    name: '我没有子菜单',
-    icon: 'clock-circle'
+    key: 'charts',
+    name: '图表展示',
+    icon: 'clock-circle',
+    child: [
+      {
+        key: 'base',
+        name: '基础示例',
+        icon: 'android'
+      }
+    ]
   },
   {
     key: 'alone2',

@@ -197,7 +197,7 @@ class SiderCustom extends PureComponent {
       >
         <Logo collapsed={this.props.collapsed} />
         <Menu
-          theme='dark'
+          theme={globalConfig.menuTheme}
           mode='inline'
           inlineCollapsed={this.props.collapsed}
           onSelect={this.handleSelect}

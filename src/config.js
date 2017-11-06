@@ -9,6 +9,7 @@
 module.exports = {
   name: 'React Startkit',  // 项目的名字
   favicon: '/favicon.ico',  // 设置网页的favicon, 可以是外链, 也可以是本地
+  menuTheme: 'dark',  // 设置左侧菜单风格
   baseRoute: '/',
   footer: '<a target="_blank" href="#">foolbear</a>版权所有 © 2015-2099',  // footer中显示的字, 可以嵌入html标签
 

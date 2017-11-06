@@ -39,6 +39,7 @@ class SiderCustom extends PureComponent {
 
   setMenuOpen = props => {
     const { path } = props
+    console.l
     this.setState({
       openKey: path.substr(0, path.lastIndexOf('/')),
       selectedKey: path,

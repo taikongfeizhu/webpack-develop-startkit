@@ -8,7 +8,7 @@ export default (store) => ({
     /*  Webpack - use 'System.import' to create a split point
         and embed an async module loader (jsonp) when bundling   */
     Promise.all([
-      import('./containers/HomeContainer'),
+      import('./containers'),
       import('./modules/')
     ]).then(([Home, modules]) => {
       const reducer = modules.default

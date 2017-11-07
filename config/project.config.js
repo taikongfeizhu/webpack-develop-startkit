@@ -55,6 +55,7 @@ const config = {
     'react-router',
     'redux',
     'redux-saga',
+    'redux-thunk',
     'history',
     'react-redux',
     'immutable',

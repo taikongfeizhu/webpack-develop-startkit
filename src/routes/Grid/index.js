@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import DataSearch from './DataSearch'
+import LazyLoad from './LazyLoad'
 
 const Grid = (props) => {
   return (
@@ -19,6 +20,7 @@ export default (store) => ({
     onEnter: (nextState, replace) => replace('/')
   },
   childRoutes: [
-    DataSearch(store)
+    DataSearch(store),
+    LazyLoad(store)
   ]
 })

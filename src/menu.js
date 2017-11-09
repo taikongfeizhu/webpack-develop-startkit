@@ -14,12 +14,17 @@
 const sidebarMenu = [
   {
     key: 'grid',  // route时url中的值
-    name: '表格操作',  // 在菜单中显示的名称
+    name: '基础操作',  // 在菜单中显示的名称
     icon: 'smile',  // 图标是可选的
     child: [
       {
         key: 'curd',
         name: '模拟CRUD',
+        icon: 'play-circle'   // 二级三级菜单也可以带图标
+      },
+      {
+        key: 'lazy',
+        name: '模块懒加载',
         icon: 'play-circle'   // 二级三级菜单也可以带图标
       }
     ]

@@ -29,7 +29,7 @@ class HeaderCustom extends Component {
 
   render () {
     return (
-      <Header style={{ background: '#fff', padding: 0, height: 60 }} className='custom-theme' >
+      <Header className='custom-header'>
         <Icon
           className='trigger custom-trigger'
           type={this.props.collapsed ? 'menu-unfold' : 'menu-fold'}

@@ -33,7 +33,7 @@ class CoreLayout extends Component {
         <Layout>
           <HeaderCustom toggle={this.toggle} user={{}} router={router}
             path={pathname} collapsed={collapsed} />
-          <Content style={{ margin: '0 16px', overflow: 'initial' }}>
+          <Content className='custom-content'>
             <Breadcrumb routes={routes} />
             <div className='ant-layout-container'>
               {children}

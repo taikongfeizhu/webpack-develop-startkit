@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Menu, Icon, Layout, Badge } from 'antd'
+import Logo from '../Logo'
 import avater from './asset/b1.jpg'
 
 const { Header } = Layout
@@ -30,6 +31,7 @@ class HeaderCustom extends Component {
   render () {
     return (
       <Header className='custom-header'>
+        <Logo collapsed={this.props.collapsed} />
         <Icon
           className='trigger custom-trigger'
           type={this.props.collapsed ? 'menu-unfold' : 'menu-fold'}
@@ -37,7 +39,7 @@ class HeaderCustom extends Component {
         />
         <Menu
           mode='horizontal'
-          style={{ float: 'right', paddingRight: 20 }}
+          style={{ float: 'right', paddingRight: 28 }}
           onClick={this.menuClick}
         >
           <Menu.Item key='1'>
@@ -47,7 +49,7 @@ class HeaderCustom extends Component {
             </Badge>
           </Menu.Item>
           <SubMenu title={<span className='avatar'>
-            <span><img src={avater} alt='头像' /></span>
+            <img src={avater} alt='头像' />
             <i className='on bottom b-white' /></span>}>
             <MenuItemGroup title='用户中心'>
               <Menu.Item key='setting:1'>你好 - {this.props.user.userName}</Menu.Item>

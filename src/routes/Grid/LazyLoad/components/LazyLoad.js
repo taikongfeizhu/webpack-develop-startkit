@@ -2,8 +2,9 @@
  * Created by hao.cheng on 2017/4/15.
  */
 import React from 'react'
-import { Card, Button } from 'antd'
 import LazilyLoad, { importLazy } from 'until/LazilyLoad'
+import { Button } from 'antd'
+import Card from 'components/Card'
 
 class LazyLoad extends React.Component {
   constructor (props) {
@@ -43,7 +44,7 @@ class LazyLoad extends React.Component {
   render () {
     const { loadModules } = this.state
     return (
-      <Card title='模块懒加载' bordered={false}>
+      <Card title='模块懒加载'>
         <Button onClick={this.handleLoadHot}>load</Button>
         <div>
           {loadModules && this.listContent()}

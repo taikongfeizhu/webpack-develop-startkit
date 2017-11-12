@@ -3,11 +3,10 @@ import PropTypes from 'prop-types'
 import { Layout, Menu, Icon } from 'antd'
 import { Link } from 'react-router'
 import Logger from 'until/Logger'
-import Logo from '../Logo'
 import items from 'menu'
 import globalConfig from 'config'
 
-import './menu.less'
+import './sider.less'
 
 const { Sider } = Layout
 const SubMenu = Menu.SubMenu
@@ -22,9 +21,7 @@ class SiderCustom extends PureComponent {
       openKeys: [],  // 当前有哪些submenu被展开
       collapsed: false,
       mode: 'inline',
-      openKey: '',
-      selectedKey: '',
-      firstHide: true
+      selectedKey: ''
     }
   }
 
@@ -39,18 +36,16 @@ class SiderCustom extends PureComponent {
 
   setMenuOpen = props => {
     const { path } = props
-    console.l
+    const newOpenPath = path.substr(0, path.lastIndexOf('/'))
     this.setState({
-      openKey: path.substr(0, path.lastIndexOf('/')),
-      selectedKey: path,
-      firstHide: false
+      openKeys: [...this.state.openKeys, newOpenPath],
+      selectedKey: path
     })
   }
 
   onCollapse = (collapsed) => {
     this.setState({
       collapsed,
-      firstHide: collapsed,
       mode: collapsed ? 'vertical' : 'inline'
     })
   }
@@ -195,14 +190,13 @@ class SiderCustom extends PureComponent {
         breakpoint='lg'
         collapsed={this.props.collapsed}
       >
-        <Logo collapsed={this.props.collapsed} />
         <Menu
           theme={globalConfig.menuTheme}
           mode='inline'
           inlineCollapsed={this.props.collapsed}
           onSelect={this.handleSelect}
           onOpenChange={this.handleOpenChange}
-          openKeys={this.state.firstHide ? null : this.state.openKeys}>
+          openKeys={this.state.openKeys}>
           {this.menu}
         </Menu>
       </Sider>

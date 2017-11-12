@@ -12,12 +12,12 @@ class Logo extends React.PureComponent {
   render () {
     return (
       <div className={this.props.collapsed ? 'ant-layout-logo-collapse' : 'ant-layout-logo-normal'}>
-        <div className='ant-layout-logo-text'>
-          {/* 侧边栏折叠的时候只显示一个字 */}
-          <Link to={globalConfig.baseRoute} style={{ display: 'inline' }}>
+        <Link to={globalConfig.baseRoute} style={{ display: 'block' }}>
+          <div className='ant-layout-logo-text'>
+            {/* 侧边栏折叠的时候只显示一个字 */}
             {this.props.collapsed ? globalConfig.name[0] : globalConfig.name}
-          </Link>
-        </div>
+          </div>
+        </Link>
       </div>
     )
   }

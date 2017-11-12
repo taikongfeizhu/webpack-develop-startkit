@@ -1,24 +1,32 @@
 .ant-layout-logo-base {
-  height: 32px;
-  background: none;
-  border-radius: 6px;
+  height: 50px;
+  float: left;
+  display: inline-block;
+  height: 50px;
+  margin-right: 0;
+  text-indent: -9999px;
 }
 
 .ant-layout-logo-normal {
-  width: 180px;
-  margin: 16px 8px 16px 12px;
-  .ant-layout-logo-base;
-}
-
-.ant-layout-logo-collapse {
-  width: 32px;
-  margin: 16px;
-  transition: all 0.3s ease;
+  width: 200px;
+  background: #fff url("/logo.png") no-repeat center center;
+  background-size: 85px auto;
   .ant-layout-logo-base;
 }
 
 .ant-layout-logo-text {
   text-align: center;
-  font-family: Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", SimSun, sans-serif;
   font-size: 22px;
+  line-height: 50px;
+  height: 50px;
+}
+
+.ant-layout-logo-collapse {
+  width: 64px;
+  transition: all 0.2s;
+  .ant-layout-logo-base;
+  .ant-layout-logo-text{
+    background-color: #414141;
+    text-indent: 0px;
+  }
 }

@@ -2,7 +2,8 @@
  * Created by hao.cheng on 2017/4/15.
  */
 import React from 'react'
-import { Table, Icon, Card } from 'antd'
+import { Table, Icon } from 'antd'
+import Card from 'components/Card'
 
 const columns = [{
   title: 'Name',
@@ -51,7 +52,7 @@ const data = [{
 }]
 
 const BasicTable = () => (
-  <Card title='表格操作' bordered={false}>
+  <Card title='表格操作'>
     <Table columns={columns} dataSource={data} />
   </Card>
 )

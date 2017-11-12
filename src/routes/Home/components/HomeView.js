@@ -2,7 +2,8 @@ import React from 'react'
 import moment from 'moment'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router'
-import { Button, Row, Col, Card } from 'antd'
+import { Button, Row, Col } from 'antd'
+import Card from 'components/Card'
 import './HomeView.less'
 
 const EnumPostStatus = {
@@ -41,7 +42,7 @@ class HomeView extends React.Component {
     console.log(params)
     return (
       <div className='gutter-example'>
-        <Card>
+        <Card title='路由示例'>
           <Row>
             <Col span={3}>action:</Col>
             <Col span={8}>{location.action}</Col>

@@ -30,9 +30,9 @@ class CoreLayout extends Component {
     return (
       <Layout className='ant-layout-has-sider'>
         <SiderCustom path={pathname} collapsed={collapsed} toggle={this.toggle} />
+        <HeaderCustom toggle={this.toggle} user={{}} router={router}
+          path={pathname} collapsed={collapsed} />
         <Layout>
-          <HeaderCustom toggle={this.toggle} user={{}} router={router}
-            path={pathname} collapsed={collapsed} />
           <Content className='custom-content'>
             <Breadcrumb routes={routes} />
             <div className='ant-layout-container'>

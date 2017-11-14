@@ -1,5 +1,5 @@
 import React from 'react'
-import { COLUMNS, UNKNOW_COLUMN } from 'const'
+import { COLUMNS, UNKNOW_COLUMN } from 'constant'
 import _ from 'lodash'
 import { Select, Radio } from 'antd'
 

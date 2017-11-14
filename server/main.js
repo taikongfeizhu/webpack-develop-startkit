@@ -4,17 +4,19 @@ const path = require('path')
 const opn = require('opn')
 const ejs = require('ejs')
 const routes = require('./routes')
+const mock = require('./routes/mock')
 const webpack = require('webpack')
 const webpackConfig = require('../config/webpack.config')
 const project = require('../config/project.config')
 const compress = require('compression')
-const proxy = require('http-proxy-middleware')
+const proxyMiddleware = require('http-proxy-middleware')
 const bodyParser = require('body-parser')
 const querystring = require('querystring')
 const proxyConfig = require('./proxy.config')
 
 const app = express()
 const localServer = `http://127.0.0.1:${project.server_port}`
+const proxyTable = Object.assign(project.proxy_table, proxyConfig)
 
 // view engine setup
 // app.set('views', path.join(__dirname, 'views'))
@@ -70,10 +72,17 @@ if (project.env === 'development') {
     path: '/__webpack_hmr'
   }))
 
-  // proxy
-  proxyConfig.forEach(function (item) {
-    app.use(item.url, proxy(createProxySetting(item.target)))
+  // proxy api requests
+  Object.keys(proxyTable).forEach(function (context) {
+    let options = proxyTable[context]
+    if (typeof options === 'string') {
+      options = createProxySetting(options)
+    }
+    app.use(context, proxyMiddleware(options))
   })
+
+  // mock router
+  app.use(project.compiler_mock_route, mock)
 
   // Serve static assets from ~/public since Webpack is unaware of
   // these files. This middleware doesn't need to be enabled outside
@@ -115,11 +124,6 @@ if (project.env === 'development') {
   // Serving ~/dist by default. Ideally these files should be served by
   // the web server and not the app server, but this helps to demo the
   // server in production.
-
-  // proxy
-  proxyConfig.forEach(function (item) {
-    app.use(item.url, proxy(createProxySetting(item.target)))
-  })
   app.use(project.compiler_public_path, express.static(project.paths.dist()))
 
   app.use(project.compiler_base_route, routes)

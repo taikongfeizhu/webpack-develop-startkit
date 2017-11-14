@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import HeaderCustom from '../Header'
 import SiderCustom from '../Sider'
 import Breadcrumb from '../Breadcrumb'
+import globalConfig from 'config'
 
 import './CoreLayout.less'
 
@@ -40,7 +41,7 @@ class CoreLayout extends Component {
             </div>
           </Content>
           <Footer className='footer'>
-            React-Admin ©2017 Created
+            {globalConfig.footer}
           </Footer>
         </Layout>
       </Layout>

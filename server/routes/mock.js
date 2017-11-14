@@ -3,11 +3,11 @@ const router = express.Router()
 const opporList = require('../data/opporList.json')
 const Mock = require('mockjs')
 
-router.get('/back_end/page/opporList', function (req, res) {
+router.get('/api/opporList', function (req, res) {
   res.json(opporList)
 })
 
-router.get('/back_end/page/employee', function (req, res) {
+router.get('/api/employee', function (req, res) {
   var data = Mock.mock({
     // 属性 list 的值是一个数组，其中含有 1 到 10 个元素
     'list|1-10': [{

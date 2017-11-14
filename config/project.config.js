@@ -16,9 +16,10 @@ const config = {
   // ----------------------------------
   path_base  : path.resolve(__dirname, '..'),
   dir_client : 'src',
+  proxy_table : {},
   node_modules : 'node_modules',
-  dir_dist   : 'output/resource/os_mobile',
-  dir_template : 'output/template/os_mobile',
+  dir_dist   : 'output/resource/startkit',
+  dir_template : 'output/template/startkit',
   dir_public : 'public',
   dir_server : 'server',
   dir_test   : 'tests',
@@ -44,6 +45,7 @@ const config = {
   compiler_fail_on_warning : false,
   compiler_quiet           : false,
   compiler_public_path     : '/resource/os_mobile',
+  compiler_mock_route      : '/mock',
   compiler_stats           : {
     chunks : false,
     chunkModules : false,

@@ -11,7 +11,7 @@ module.exports = {
   favicon: '/favicon.ico',  // 设置网页的favicon, 可以是外链, 也可以是本地
   menuTheme: 'dark',  // 设置左侧菜单风格
   baseRoute: '/',
-  footer: '<a target="_blank" href="#">foolbear</a>版权所有 © 2015-2099',  // footer中显示的字, 可以嵌入html标签
+  footer: 'React-Startkit ©Bytedance Created',  // footer中显示的字, 可以嵌入html标签
 
   debug: true,  // 是否开启debug模式, 不会请求后端接口, 使用mock的数据
 

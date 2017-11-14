@@ -1,6 +1,8 @@
+const prefix = '/api'
+
 export default {
   getOpporList: {
-    url: '/back_end/page/opporList',
+    url: `${prefix}/opporList/`,
     method: 'GET'
   }
 }

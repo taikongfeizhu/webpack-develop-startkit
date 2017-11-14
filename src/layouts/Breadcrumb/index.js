@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Breadcrumb, Icon } from 'antd'
 import { Link } from 'react-router'
 import sidebarMenu, { headerMenu } from 'menu'
-import Logger from 'until/Logger'
+import Logger from 'utils/Logger'
 import globalConfig from 'config.js'
 import './index.less'
 

@@ -1,26 +1,34 @@
 import fetch from './fetch'
-import { apis } from './config'
+import _ from 'lodash'
 import querystring from 'querystring'
 
-export default function fetchAPI (type, body, multipartFormData = true) {
-  var url = apis[type].url
-  var config = {
+export default function fetchAPI (api, body, rest, multipartFormData = true) {
+  let { url, method } = api
+  let config = {
     headers: {
       Accept: 'application/json',
       'X-Requested-With': 'XMLHttpRequest'
     },
     credentials: 'include',
-    method: apis[type].method
+    method: method
   }
-  if (apis[type].method === 'GET') {
+  if (method === 'GET') {
     if (body) {
-      url = apis[type].url + `?${body}`
+      if (rest) {
+        url = url + `${body}`
+      } else {
+        // 增加对象格式的兼容 by jican@bytedance.com
+        let params = _.isPlainObject(body) ? querystring.stringify(body) : body
+        url = url + `?${params}`
+      }
     }
   } else {
     if (multipartFormData) {
       const formData = new FormData()
       for (let name in body) {
-        formData.append(name, body[name])
+        // stringify object by jican@bytedance.com
+        let value = _.isPlainObject(body[name]) ? JSON.stringify(body[name]) : body[name]
+        formData.append(name, value)
       }
       config.body = formData
     } else {

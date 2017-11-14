@@ -2,7 +2,7 @@
  * Created by hao.cheng on 2017/4/15.
  */
 import React from 'react'
-import LazilyLoad, { importLazy } from 'until/LazilyLoad'
+import LazilyLoad, { importLazy } from 'utils/LazilyLoad'
 import { Button } from 'antd'
 import Card from 'components/Card'
 

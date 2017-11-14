@@ -2,59 +2,48 @@
  * Created by hao.cheng on 2017/4/15.
  */
 import React from 'react'
-import { Table, Icon } from 'antd'
+import PropTypes from 'prop-types'
+import utils from 'utils'
+import CustomTable from 'components/CustomTable'
 import Card from 'components/Card'
 
-const columns = [{
-  title: 'Name',
-  dataIndex: 'name',
-  key: 'name',
-  render: text => <a>{text}</a>
-}, {
-  title: 'Age',
-  dataIndex: 'age',
-  key: 'age'
-}, {
-  title: 'Address',
-  dataIndex: 'address',
-  key: 'address'
-}, {
-  title: 'Action',
-  key: 'action',
-  render: (text, record) => (
-    <span>
-      <a>Action 一 {record.name}</a>
-      <span className='ant-divider' />
-      <a>Delete</a>
-      <span className='ant-divider' />
-      <a className='ant-dropdown-link'>
-        More actions <Icon type='down' />
-      </a>
-    </span>
-  )
-}]
+const columns = [
+  'id',
+  'name',
+  'sales_name',
+  'os_department_name',
+  'status_name',
+  'address'
+]
 
-const data = [{
-  key: '1',
-  name: 'John Brown',
-  age: 32,
-  address: 'New York No. 1 Lake Park'
-}, {
-  key: '2',
-  name: 'Jim Green',
-  age: 42,
-  address: 'London No. 1 Lake Park'
-}, {
-  key: '3',
-  name: 'Joe Black',
-  age: 32,
-  address: 'Sidney No. 1 Lake Park'
-}]
+class BasicTable extends React.Component {
+  constructor (props) {
+    super(props)
+  }
 
-const BasicTable = () => (
-  <Card title='表格操作'>
-    <Table columns={columns} dataSource={data} />
-  </Card>
-)
+  componentDidMount () {
+    const { requestOpportunityData } = this.props
+    const pramas = {}
+    requestOpportunityData(pramas)
+  }
+
+  render () {
+    const { curd } = this.props
+    return (
+      <Card title='表格操作'>
+        <CustomTable
+          dataSource={curd.opporList}
+          columns={utils.buildColumns(columns)}
+          scroll={{ x: 1200 }}
+        />
+      </Card>
+    )
+  }
+}
+
+BasicTable.propTypes = {
+  requestOpportunityData: PropTypes.func.isRequired,
+  curd: PropTypes.object.isRequired
+}
 
 export default BasicTable

@@ -1,85 +1,44 @@
 {
-  "resCode": "000",
-  "data": {
-    "pageSize": "10",
-    "countSize": "5",
-    "list": [
-      {
-        "duration": "60",
-        "classStartTime": "1481254200000",
-        "gradeId": "1008",
-        "courseTitle": "11月11日初一数学作业错题讲解",
-        "subjectId": "10011",
-        "topicNum": "0",
-        "advertiseResId": "0",
-        "isHot": "0",
-        "courseId": "6225885867050016",
-        "isRecommend": "0"
+  "code": 1,
+  "data": [
+    {
+      "about_to_expire": false,
+      "address": "测试数据啦啦啦",
+      "advertisers": [],
+      "appointment_time": "2017-11-07 13:30",
+      "assign_history": "2017-11-14 19:31",
+      "assign_type": 3,
+      "deadline": "2017-12-12 24点",
+      "id": 28391664,
+      "industry": "家居日用品",
+      "industry_id": null,
+      "intentionality": {
+        "name": "60%--安排拜访",
+        "num": 60
       },
-      {
-        "duration": "60",
-        "classStartTime": "1480473600000",
-        "gradeId": "1001",
-        "courseTitle": "测试讲作业提示框bug-2133",
-        "subjectId": "10010",
-        "topicNum": "0",
-        "advertiseResId": "0",
-        "isHot": "0",
-        "courseId": "6163545821676576",
-        "isRecommend": "0"
-      },
-      {
-        "duration": "240",
-        "classStartTime": "1480500000000",
-        "gradeId": "1001",
-        "courseTitle": "勿动-勿购买-佳明测试讲作业-1024-006",
-        "subjectId": "10010",
-        "topicNum": "2",
-        "advertiseResId": "0",
-        "isHot": "0",
-        "courseId": "6175021449937952",
-        "isRecommend": "1"
-      },
-      {
-        "duration": "60",
-        "classStartTime": "1480665600000",
-        "gradeId": "1008",
-        "courseTitle": "11月10日初一数学作业错题讲解",
-        "subjectId": "10011",
-        "topicNum": "0",
-        "advertiseResId": "0",
-        "isHot": "0",
-        "courseId": "6223730227020832",
-        "isRecommend": "0"
-      },
-      {
-        "duration": "60",
-        "classStartTime": "1481254200000",
-        "gradeId": "1008",
-        "courseTitle": "11月11日初一数学作业错题讲解",
-        "subjectId": "10011",
-        "topicNum": "0",
-        "advertiseResId": "0",
-        "isHot": "0",
-        "courseId": "6225884891743264",
-        "isRecommend": "0"
-      },
-      {
-        "duration": "60",
-        "classStartTime": "1481254200000",
-        "gradeId": "1008",
-        "courseTitle": "11月11日初一数学作业错题讲解",
-        "subjectId": "10011",
-        "topicNum": "0",
-        "advertiseResId": "0",
-        "isHot": "0",
-        "courseId": "6225885867050016",
-        "isRecommend": "0"
-      }
-    ],
-    "currPage": "1",
-    "totalPages": "2"
-  },
-  "currTime": "1480064767978",
-  "resMsg": "成功"
+      "is_delay": false,
+      "is_department_name": "F组",
+      "is_new_protection": true,
+      "name": "我要上天科技有限公司",
+      "os_department_name": "A组",
+      "os_sale_id": 19887878,
+      "os_sale_name": "江小白",
+      "product_name": null,
+      "protection_state": "锁定中",
+      "register_code": "4111111111111111",
+      "remain_time": 2347138.27864,
+      "sales_id": 3086598,
+      "sales_name": "江小白",
+      "second_industry": "餐具",
+      "second_industry_id": null,
+      "site": "http://www.toutiao.com",
+      "source": 6,
+      "source_name": "工商企业库",
+      "status": 8,
+      "status_name": "没有跟进"
+    }
+  ],
+  "msg": "操作成功",
+  "success": true,
+  "total": 20681
 }

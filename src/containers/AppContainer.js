@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { browserHistory, Router } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
-import withBasename from 'until/withBasename'
+import withBasename from 'utils/withBasename'
 import { Provider } from 'react-redux'
 
 const baseName = ''

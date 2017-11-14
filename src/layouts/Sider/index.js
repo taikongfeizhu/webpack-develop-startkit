@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Layout, Menu, Icon } from 'antd'
 import { Link } from 'react-router'
-import Logger from 'until/Logger'
+import Logger from 'utils/Logger'
 import items from 'menu'
 import globalConfig from 'config'
 
@@ -166,7 +166,7 @@ class SiderCustom extends PureComponent {
           mode='inline'
           onSelect={this.handleSelect}
           defaultOpenKeys={[this.setDefaultOpenMenu(routeOpenKey, items[0].key)]}
-          defaultSelectedKeys={[this.setDefaultOpenMenu(routeSelectedKey, items[0].child[0].key)]}>
+          defaultSelectedKeys={[this.setDefaultOpenMenu(routeSelectedKey, '')]}>
           {this.menu}
         </Menu>
       </Sider>

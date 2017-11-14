@@ -1,8 +1,8 @@
-const prefix = '/api'
+const prefix = '/api/'
 
 export default {
   getOpporList: {
-    url: `${prefix}/opporList/`,
+    url: `${prefix}opportunity_list/`,
     method: 'GET'
   }
 }

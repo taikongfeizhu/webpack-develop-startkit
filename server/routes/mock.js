@@ -7,14 +7,19 @@ router.get('/api/opporList', function (req, res) {
   res.json(opporList)
 })
 
-router.get('/api/employee', function (req, res) {
+router.get('/api/opportunity_list', function (req, res) {
   var data = Mock.mock({
     // 属性 list 的值是一个数组，其中含有 1 到 10 个元素
-    'list|1-10': [{
+    'data|1-50': [{
       // 属性 id 是一个自增数，起始值为 1，每次增 1
       'id|+1': 1,
-      'name': 'name'
-    }]
+      'name': '我要上天',
+      'sales_name': '太厉害工程',
+      'os_department_name': 'A组',
+      'status_name': '跟进中',
+      'address': '我要上天科技有限公司'
+    }],
+    code: 1
   })
   res.json(data)
 })

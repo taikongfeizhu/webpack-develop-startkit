@@ -4,6 +4,7 @@ import createStore from './store/createStore'
 import AppContainer from './containers/AppContainer'
 import 'babel-polyfill'
 
+import 'static/styles/normalize.css'
 import 'static/styles/core.less'
 
 // ========================================================

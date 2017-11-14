@@ -28,19 +28,19 @@ export const COLUMNS = {
   },
   os_department_name : {
     title: 'OS销售部门',
-    width: '200',
+    width: 200,
     key: 'os_department_name',
     dataIndex: 'os_department_name'
   },
   status_name : {
     title: '跟进状态',
-    width: '200',
+    width: 200,
     key: 'status_name',
     dataIndex: 'status_name'
   },
   address : {
     title: '地址',
-    width: '200',
+    width: 200,
     key: 'address',
     dataIndex: 'address'
   }

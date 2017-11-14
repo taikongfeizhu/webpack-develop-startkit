@@ -169,7 +169,6 @@
     "mockjs": "^1.0.1-beta3",
     "multer": "^1.3.0",
     "node-fetch": "^1.7.1",
-    "normalize.css": "^5.0.0",
     "nprogress": "^0.2.0",
     "opn": "^5.1.0",
     "path-to-regexp": "^1.7.0",

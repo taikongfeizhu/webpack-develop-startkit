@@ -20,8 +20,7 @@ class SiderCustom extends PureComponent {
     this.state = {
       openKeys: [],  // 当前有哪些submenu被展开
       collapsed: false,
-      mode: 'inline',
-      selectedKey: ''
+      mode: 'inline'
     }
   }
 
@@ -38,8 +37,7 @@ class SiderCustom extends PureComponent {
     const { path } = props
     const newOpenPath = path.substr(0, path.lastIndexOf('/'))
     this.setState({
-      openKeys: [...this.state.openKeys, newOpenPath],
-      selectedKey: path
+      openKeys: [...this.state.openKeys, newOpenPath]
     })
   }
 
@@ -65,13 +63,25 @@ class SiderCustom extends PureComponent {
     )
   }
 
+  /**
+   * 处理'叶子'节点的点击事件
+   * @param key
+   */
+  handleSelect = ({ key }) => {
+    // 如果是level1级别的菜单触发了这个事件, 说明这个菜单没有子项, 需要把其他所有submenu折叠
+    if (globalConfig.sidebar.autoMenuSwitch &&
+      this.level1KeySet.has(key) &&
+      this.state.openKeys.length > 0) {
+      this.setState({ openKeys: [] })
+    }
+  }
+
   componentWillMount () {
     const paths = []  // 暂存各级路径, 当作stack用
     const level1KeySet = new Set()  // 暂存所有顶级菜单的key
     const level2KeyMap = new Map()  // 次级菜单与顶级菜单的对应关系
 
-    // 菜单项是从配置中读取的, parse过程还是有点复杂的
-    // map函数很好用
+    // 菜单项从配置中读取
     const menu = items.map((level1) => {
       // parse一级菜单
       paths.push(level1.key)
@@ -79,7 +89,6 @@ class SiderCustom extends PureComponent {
       if (this.state.openKeys.length === 0) {
         this.state.openKeys.push(level1.key)  // 默认展开第一个菜单, 直接修改state, 没必要setState
       }
-
       // 是否有子菜单?
       if (level1.child) {
         const level2menu = level1.child.map((level2) => {
@@ -136,67 +145,28 @@ class SiderCustom extends PureComponent {
         return tmp
       }
     })
-
     this.menu = menu
-    this.level1KeySet = level1KeySet
-    this.level2KeyMap = level2KeyMap
   }
 
-  handleOpenChange = (openKeys) => {
-    if (!globalConfig.sidebar.autoMenuSwitch) {  // 不开启这个功能
-      this.setState({ openKeys })
-      return
-    }
-
-    logger.debug('old open keys: %o', openKeys)
-    const newOpenKeys = []
-
-    // 有没有更优雅的写法
-    let lastKey = ''  // 找到最近被点击的一个顶级菜单, 跟数组中元素的顺序有关
-    for (let i = openKeys.length; i >= 0; i--) {
-      if (this.level1KeySet.has(openKeys[i])) {
-        lastKey = openKeys[i]
-        break
-      }
-    }
-    // 过滤掉不在lastKey下面的所有子菜单
-    for (const key of openKeys) {
-      const ancestor = this.level2KeyMap.get(key)
-      if (ancestor === lastKey) {
-        newOpenKeys.push(key)
-      }
-    }
-    newOpenKeys.push(lastKey)
-    logger.debug('new open keys: %o', newOpenKeys)
-    this.setState({ openKeys: newOpenKeys })
-  }
-
-  /**
-   * 处理'叶子'节点的点击事件
-   *
-   * @param key
-   */
-  handleSelect = ({ key }) => {
-    // 如果是level1级别的菜单触发了这个事件, 说明这个菜单没有子项, 需要把其他所有submenu折叠
-    if (globalConfig.sidebar.autoMenuSwitch && this.level1KeySet.has(key) && this.state.openKeys.length > 0) {
-      this.setState({ openKeys: [] })
-    }
+  setDefaultOpenMenu (path, defaultValue) {
+    return path === '' ? defaultValue : path
   }
 
   render () {
+    const { path } = this.props
+    const [routeOpenKey, routeSelectedKey] = path.split('/')
     return (
       <Sider
         trigger={null}
-        breakpoint='lg'
+        collapsible
         collapsed={this.props.collapsed}
       >
         <Menu
-          theme={globalConfig.menuTheme}
+          theme='dark'
           mode='inline'
-          inlineCollapsed={this.props.collapsed}
           onSelect={this.handleSelect}
-          onOpenChange={this.handleOpenChange}
-          openKeys={this.state.openKeys}>
+          defaultOpenKeys={[this.setDefaultOpenMenu(routeOpenKey, items[0].key)]}
+          defaultSelectedKeys={[this.setDefaultOpenMenu(routeSelectedKey, items[0].child[0].key)]}>
           {this.menu}
         </Menu>
       </Sider>

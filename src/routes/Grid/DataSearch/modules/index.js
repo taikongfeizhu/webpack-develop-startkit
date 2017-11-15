@@ -1,15 +1,18 @@
 import { put, take, call } from 'redux-saga/effects'
 import Immutable from 'immutable'
+import { singleton } from 'constant/single'
 import fetchAPI from 'api'
 import { apis } from 'api/config'
+
+const single = singleton.setKey('GRID')
 
 // ------------------------------------
 // Constants
 // ------------------------------------
-export const REQUEST_OPPOR_DATA = 'REQUEST_OPPOR_DATA'
-export const ADD_OPPOR_DATA = 'ADD_OPPOR_DATA'
-export const CHANGE_FIELD = 'CHANGE_FIELD'
-export const RESET_DATA = 'RESET_DATA'
+export const REQUEST_OPPOR_DATA = single.make('REQUEST_OPPOR_DATA')
+export const ADD_OPPOR_DATA = single.make('ADD_OPPOR_DATA')
+export const CHANGE_FIELD = single.make('CHANGE_FIELD')
+export const RESET_DATA = single.make('RESET_DATA')
 
 // ------------------------------------
 // Actions
@@ -55,12 +58,12 @@ var initialState = Immutable.fromJS({
   params: ''
 })
 
-export default function followPlan (state = initialState, action) {
+export default function grid (state = initialState, action) {
   var map = {
-    REQUEST_OPPOR_DATA: function () {
+    [REQUEST_OPPOR_DATA]: function () {
       return state.set('params', action.payload)
     },
-    ADD_OPPOR_DATA: function () {
+    [ADD_OPPOR_DATA]: function () {
       return state.set('opporList', action.payload)
     }
   }
@@ -78,7 +81,9 @@ export default function followPlan (state = initialState, action) {
 export function *fetchOpportunityList (type, body) {
   while (true) {
     const { payload } = yield take(REQUEST_OPPOR_DATA)
-    const follow = yield call(fetchAPI, apis.getOpporList, payload)
+    const [follow] = [
+      yield call(fetchAPI, apis.getOpporList, payload)
+    ]
 
     yield put(addOpportunityData(follow.data))
   }

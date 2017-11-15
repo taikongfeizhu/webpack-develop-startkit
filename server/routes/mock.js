@@ -13,7 +13,9 @@ router.get('/api/opportunity_list', function (req, res) {
     'data|1-50': [{
       // 属性 id 是一个自增数，起始值为 1，每次增 1
       'id|+1': 1,
-      'name': '我要上天',
+      'create_day':'@date("yyyy-MM-dd")',
+      'city': '@city(true)',
+      'name': '@cname',
       'sales_name': '太厉害工程',
       'os_department_name': 'A组',
       'status_name': '跟进中',

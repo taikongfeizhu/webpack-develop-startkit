@@ -7,6 +7,7 @@ import utils from 'utils'
 import { Button, Form } from 'antd'
 import CustomTable from 'components/CustomTable'
 import Card from 'components/Card'
+import _ from 'lodash'
 
 const FormItem = Form.Item
 
@@ -14,8 +15,6 @@ const columns = [
   'id',
   'name',
   'sales_name',
-  'city',
-  'create_day',
   'os_department_name',
   'status_name',
   'address'
@@ -37,16 +36,17 @@ class BasicTable extends React.Component {
   }
 
   render () {
-    const { curd } = this.props
+    const { thunk } = this.props
+    const opporList = _.get(thunk, 'opporList', [])
     return (
-      <Card title='表格操作'>
+      <Card title='Thunk Demo'>
         <Form layout='inline'>
           <FormItem>
             <Button size='small' onClick={this.handleRequstOpporData}>刷新数据</Button>
           </FormItem>
         </Form>
         <CustomTable
-          dataSource={curd.opporList}
+          dataSource={opporList}
           columns={utils.buildColumns(columns)}
           scroll={{ x: 1200 }}
         />
@@ -57,7 +57,7 @@ class BasicTable extends React.Component {
 
 BasicTable.propTypes = {
   requestOpportunityData: PropTypes.func.isRequired,
-  curd: PropTypes.object.isRequired
+  thunk: PropTypes.object.isRequired
 }
 
 export default BasicTable

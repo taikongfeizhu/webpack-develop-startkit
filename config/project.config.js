@@ -44,7 +44,7 @@ const config = {
   compiler_hash_type       : 'hash:12',
   compiler_fail_on_warning : false,
   compiler_quiet           : false,
-  compiler_public_path     : '/resource/os_mobile',
+  compiler_public_path     : '/resource/startkit',
   compiler_mock_route      : '/mock',
   compiler_stats           : {
     chunks : false,

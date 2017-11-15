@@ -43,6 +43,16 @@ export const COLUMNS = {
     width: 200,
     key: 'address',
     dataIndex: 'address'
+  },
+  city:{
+    title: '城市',
+    key: 'city',
+    dataIndex: 'city'
+  },
+  create_day:{
+    title: '创建日期',
+    key: 'create_day',
+    dataIndex: 'create_day'
   }
 }
 

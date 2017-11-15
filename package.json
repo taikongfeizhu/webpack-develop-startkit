@@ -1,10 +1,10 @@
 {
-  "name": "bytedance-start-kit",
+  "name": "cgfe-react-startkit",
   "version": "0.0.1",
   "description": "a react start kit for bytedance",
   "main": "index.js",
   "scripts": {
-    "clean": "rimraf dist",
+    "clean": "rimraf output/*",
     "compile": "better-npm-run compile",
     "lint": "eslint bin build config server src tests --ext .jsx,.js",
     "lint:fix": "npm run lint -- --fix",
@@ -91,7 +91,6 @@
     "webpack2-react-redux-starter"
   ],
   "devDependencies": {
-    "antd": "^2.13.1",
     "babel-core": "^6.21.0",
     "babel-eslint": "^7.1.1",
     "babel-loader": "^6.2.10",
@@ -150,6 +149,7 @@
     "yarn": "^0.24.4"
   },
   "dependencies": {
+    "antd": "^2.13.1",
     "add-dom-event-listener": "^1.0.1",
     "animate.css": "^3.5.2",
     "animejs": "^1.1.1",

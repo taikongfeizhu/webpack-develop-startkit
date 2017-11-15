@@ -5,8 +5,8 @@ export default (store) => ({
     /*  Webpack - use 'System.import' to create a split point
         and embed an async module loader (jsonp) when bundling   */
     Promise.all([
-      import('./containers')
-    ]).then(([ChartsGallery, modules]) => {
+      import(/* webpackChunkName: "recharts" */ './containers')
+    ]).then(([ChartsGallery]) => {
       /*  Return getComponent   */
       cb(null, ChartsGallery.default)
     })

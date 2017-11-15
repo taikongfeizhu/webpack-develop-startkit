@@ -42,7 +42,7 @@ webpackConfig.output = {
   filename   : `js/[name].[${project.compiler_hash_type}]${project.compiler_timestamp}.js`,
   path       : project.paths.dist(),
   publicPath : project.compiler_public_path,
-  chunkFilename: '[name].js'
+  chunkFilename: '[name].[id].js'
 }
 
 // ------------------------------------
@@ -68,7 +68,7 @@ webpackConfig.plugins = [
     hash: false,
     version: packConfig.version,
     favicon: project.paths.public('favicon.ico'),
-    filename: 'index.html',
+    filename: __DEV__ ? 'index.html' : project.paths.template('index.html'),
     inject: 'body',
     minify: {
       collapseWhitespace: true,
@@ -121,13 +121,14 @@ if (__DEV__) {
 if (!__TEST__) {
   webpackConfig.plugins.push(
     new webpack.optimize.CommonsChunkPlugin({
-      names: ['vendor']
+      names: 'vendor',
+      minChunks: Infinity
     }),
     // extract webpack runtime and module manifest to its own file in order to
     // prevent vendor hash from being updated whenever app bundle is updated
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest',
-      chunks: ['vendor']
+      chunks: 'vendor'
     })
   )
 }

@@ -5,8 +5,8 @@ export default (store) => ({
     /*  Webpack - use 'System.import' to create a split point
         and embed an async module loader (jsonp) when bundling   */
     Promise.all([
-      import('./containers')
-    ]).then(([Container, modules]) => {
+      import(/* webpackChunkName: "lazyLoad" */ './containers')
+    ]).then(([Container]) => {
       /*  Return getComponent   */
       cb(null, Container.default)
     })

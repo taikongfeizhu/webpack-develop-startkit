@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import DataSearch from './DataSearch'
 import LazyLoad from './LazyLoad'
+import ThunkDemo from './ThunkDemo'
 
 const Grid = (props) => {
   return (
@@ -21,6 +22,7 @@ export default (store) => ({
   },
   childRoutes: [
     DataSearch(store),
-    LazyLoad(store)
+    LazyLoad(store),
+    ThunkDemo(store)
   ]
 })

@@ -19,12 +19,17 @@ const sidebarMenu = [
     child: [
       {
         key: 'curd',
-        name: '模拟CRUD',
+        name: '数据请求',
         icon: 'play-circle'   // 二级三级菜单也可以带图标
       },
       {
         key: 'lazy',
         name: '模块懒加载',
+        icon: 'play-circle'   // 二级三级菜单也可以带图标
+      },
+      {
+        key: 'thunk',
+        name: 'redux-thunk',
         icon: 'play-circle'   // 二级三级菜单也可以带图标
       }
     ]

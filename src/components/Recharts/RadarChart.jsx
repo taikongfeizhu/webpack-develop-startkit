@@ -1,5 +1,5 @@
 /**
- * Created by hao.cheng on 2017/4/22.
+ * Created by huangjian on 2017/4/22.
  */
 import React from 'react'
 import { Radar, RadarChart, PolarGrid, Legend,

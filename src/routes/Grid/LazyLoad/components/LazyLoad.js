@@ -1,5 +1,5 @@
 /**
- * Created by hao.cheng on 2017/4/15.
+ * Created by huangjian on 2017/4/15.
  */
 import React from 'react'
 import LazilyLoad, { importLazy } from 'utils/LazilyLoad'

@@ -39,7 +39,7 @@ const config = {
   compiler_babel : {
     cacheDirectory : true
   },
-  compiler_devtool         : 'cheap-eval-source-map',
+  compiler_devtool         : '#cheap-eval-source-map',
   compiler_timestamp       : '',
   compiler_hash_type       : 'hash:12',
   compiler_fail_on_warning : false,

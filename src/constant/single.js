@@ -37,12 +37,12 @@ Singleton.prototype.setKey = function (key) {
 }
 
 Singleton.factory = function () {
-  if (!global.instance) {
-    global.instance = new Singleton()
+  if (!this.instance) {
+    this.instance = new Singleton()
   } else {
     console.error('instance is created')
   }
-  return global.instance
+  return this.instance
 }
 
 export const singleton = Singleton.factory()

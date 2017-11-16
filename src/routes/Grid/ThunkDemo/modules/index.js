@@ -11,6 +11,8 @@ const single = singleton.setKey('THUNK')
 export const REQUEST_OPPOR_DATA = single.make('REQUEST_OPPOR_DATA')
 export const ADD_OPPOR_DATA = single.make('ADD_OPPOR_DATA')
 
+console.log('THUNK', single)
+
 // ------------------------------------
 // Actions
 // ------------------------------------

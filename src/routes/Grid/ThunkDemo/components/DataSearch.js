@@ -1,5 +1,5 @@
 /**
- * Created by hao.cheng on 2017/4/15.
+ * Created by huangjian on 2017/4/15.
  */
 import React from 'react'
 import PropTypes from 'prop-types'
@@ -14,10 +14,10 @@ const FormItem = Form.Item
 const columns = [
   'id',
   'name',
+  'address',
   'sales_name',
   'os_department_name',
-  'status_name',
-  'address'
+  'status_name'
 ]
 
 class BasicTable extends React.Component {

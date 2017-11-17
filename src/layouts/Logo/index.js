@@ -13,9 +13,10 @@ class Logo extends React.PureComponent {
     return (
       <div className={this.props.collapsed ? 'ant-layout-logo-collapse' : 'ant-layout-logo-normal'}>
         <Link to={globalConfig.baseRoute} style={{ display: 'block' }}>
-          <div className='ant-layout-logo-text'>
-            {/* 侧边栏折叠的时候只显示一个字 */}
-            {this.props.collapsed ? globalConfig.name[0] : globalConfig.name}
+          <div className='ant-layout-logo'>
+            <span className='ant-layout-logo-icon' />
+            <span className='ant-layout-logo-name'>{globalConfig.name}</span>
+            <span className='ant-layout-logo-sub-name'>{globalConfig.subName}</span>
           </div>
         </Link>
       </div>

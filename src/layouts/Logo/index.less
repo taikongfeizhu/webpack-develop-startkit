@@ -1,33 +1,53 @@
 .ant-layout-logo-base {
-  height: 50px;
   float: left;
   display: inline-block;
   height: 50px;
   margin-right: 0;
-  text-indent: -9999px;
+  text-align: center;
   box-shadow: 2px 2px 20px 0 rgba(0,0,0,.05);
+  background: #414141;
 }
 
 .ant-layout-logo-normal {
   width: 200px;
-  background: #fff url("./assets/logo.png") no-repeat center center;
-  background-size: 85px auto;
   .ant-layout-logo-base;
 }
 
-.ant-layout-logo-text {
+.ant-layout-logo {
   text-align: center;
   font-size: 22px;
   line-height: 50px;
   height: 50px;
+  font-weight: bold;
+  font-size: 18px;
+  &-icon{
+    width: 30px;
+    height: 30px;
+    margin-bottom: -8px;
+    display: inline-block;
+    background: url("./assets/logo.png") no-repeat;
+    background-size: 30px auto;
+    color: #dcdcdc;
+  }
+  &-name{
+    display: inline-block;
+    color: #dcdcdc;
+    padding-left: 5px;
+  }
+  &-sub-name{
+    display: inline-block;
+    padding-left: 1px;
+    color: #0ca0ff;
+  }
 }
 
 .ant-layout-logo-collapse {
   width: 64px;
   transition: all 0.2s;
   .ant-layout-logo-base;
-  .ant-layout-logo-text{
-    background: #414141 url("./assets/logo.png") no-repeat 22px center;
-    background-size: 85px auto;
+  background-position: 17px center;
+  .ant-layout-logo-name,
+  .ant-layout-logo-sub-name{
+    display: none;
   }
 }

@@ -7,7 +7,8 @@
 // 遵循统一的规范, 好维护, 交给其他人也比较简单
 
 module.exports = {
-  name: 'Starkit',  // 项目的名字
+  name: 'START',  // 项目的名字
+  subName: 'KIT',  // 项目的名字
   favicon: '/favicon.ico',  // 设置网页的favicon, 可以是外链, 也可以是本地
   menuTheme: 'dark',  // 设置左侧菜单风格
   baseRoute: '/',

@@ -31,6 +31,11 @@ const sidebarMenu = [
         key: 'thunk',
         name: 'redux-thunk',
         icon: 'play-circle'   // 二级三级菜单也可以带图标
+      },
+      {
+        key: 'route',
+        name: '路由模块',
+        icon: 'play-circle'   // 二级三级菜单也可以带图标
       }
     ]
   },

@@ -20,7 +20,7 @@ const sidebarMenu = [
       {
         key: 'curd',
         name: '数据请求',
-        icon: 'play-circle'   // 二级三级菜单也可以带图标
+        icon: 'bars'   // 二级三级菜单也可以带图标
       },
       {
         key: 'lazy',
@@ -29,25 +29,25 @@ const sidebarMenu = [
       },
       {
         key: 'thunk',
-        name: 'redux-thunk',
-        icon: 'play-circle'   // 二级三级菜单也可以带图标
+        name: 'Thunk',
+        icon: 'laptop'   // 二级三级菜单也可以带图标
       },
       {
         key: 'route',
         name: '路由模块',
-        icon: 'play-circle'   // 二级三级菜单也可以带图标
+        icon: 'book'   // 二级三级菜单也可以带图标
       }
     ]
   },
   {
     key: 'charts',
     name: '图表展示',
-    icon: 'clock-circle',
+    icon: 'area-chart',
     child: [
       {
         key: 'base',
         name: '基础示例',
-        icon: 'android'
+        icon: 'bar-chart'
       }
     ]
   },

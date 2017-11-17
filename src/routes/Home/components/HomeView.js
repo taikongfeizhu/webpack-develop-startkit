@@ -13,8 +13,8 @@ class HomeView extends React.Component {
     console.log(location, params)
     return (
       <div className='gutter-example'>
-        <Card title='Hilo'>
-          <h2>Hilo Start</h2>
+        <Card title='Hello'>
+          <h2>Tree New Bee</h2>
         </Card>
       </div>
     )

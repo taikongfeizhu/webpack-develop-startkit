@@ -30,7 +30,7 @@ class HomeView extends React.Component {
     e.preventDefault()
     const { router } = this.props
     router.replace({
-      pathname: '/',
+      pathname: '/grid/route/',
       query: {
         status: EnumPostStatus[status]
       }
@@ -63,14 +63,14 @@ class HomeView extends React.Component {
             <Col span={10}>Link Demo:</Col>
             <Col span={7}>
               <Link to={{
-                pathname: '/',
+                pathname: '/grid/route/',
                 state: { fromInside: true },
                 query: { status: EnumPostStatus.UNPUBLISH }
               }}>status1</Link>
             </Col>
             <Col span={7}>
               <Link to={{
-                pathname: '/',
+                pathname: '/grid/route/',
                 state: { fromInside: false },
                 query: { status: EnumPostStatus.PUBLISHED }
               }}>status2</Link>

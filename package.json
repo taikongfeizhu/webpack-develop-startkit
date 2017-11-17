@@ -1,7 +1,7 @@
 {
-  "name": "cgfe-react-startkit",
+  "name": "webpack-develop-startkit",
   "version": "0.0.1",
-  "description": "a react start kit for bytedance",
+  "description": "a react start kit for react",
   "main": "index.js",
   "scripts": {
     "clean": "rimraf output/*",
@@ -80,9 +80,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:shengnian/webpack2-react-redux-starter.git"
+    "url": "https://github.com/taikongfeizhu/webpack-develop-startkit"
   },
-  "author": "c <c@nice0.com> (http://nice0.com)",
+  "author": "<huangjian1820@gmail.com> (segmentfault.com/u/abcat)",
   "license": "MIT",
   "keywords": [
     "react",

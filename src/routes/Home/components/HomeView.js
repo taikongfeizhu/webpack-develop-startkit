@@ -9,8 +9,7 @@ class HomeView extends React.Component {
   }
 
   render () {
-    const { location, params } = this.props
-    console.log(location, params)
+    // const { location, params } = this.props
     return (
       <div className='gutter-example'>
         <Card title='Hello'>

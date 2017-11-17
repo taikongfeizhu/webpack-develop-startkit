@@ -148,13 +148,18 @@ class SiderCustom extends PureComponent {
     this.menu = menu
   }
 
-  setDefaultOpenMenu (path, defaultValue) {
-    return path === '' ? defaultValue : path
+  getDefaultOpenKey (path) {
+    const pathSplit = path === '/' ? [] : path.split('/')
+    const [openKeys = items[0].key, selectedKeys = ''] = pathSplit
+    return {
+      openKeys,
+      selectedKeys
+    }
   }
 
   render () {
     const { path } = this.props
-    const [routeOpenKey, routeSelectedKey] = path.split('/')
+    const { openKeys, selectedKeys } = this.getDefaultOpenKey(path)
     return (
       <Sider
         trigger={null}
@@ -162,11 +167,11 @@ class SiderCustom extends PureComponent {
         collapsed={this.props.collapsed}
       >
         <Menu
-          theme='dark'
+          theme={globalConfig.menuTheme}
           mode='inline'
           onSelect={this.handleSelect}
-          defaultOpenKeys={[this.setDefaultOpenMenu(routeOpenKey, items[0].key)]}
-          defaultSelectedKeys={[this.setDefaultOpenMenu(routeSelectedKey, '')]}>
+          defaultOpenKeys={[openKeys]}
+          defaultSelectedKeys={[selectedKeys]}>
           {this.menu}
         </Menu>
       </Sider>

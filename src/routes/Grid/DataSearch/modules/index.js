@@ -9,10 +9,10 @@ const single = singleton.setKey('GRID')
 // ------------------------------------
 // Constants
 // ------------------------------------
-export const REQUEST_OPPOR_DATA = single.make('REQUEST_OPPOR_DATA')
-export const ADD_OPPOR_DATA = single.make('ADD_OPPOR_DATA')
-export const CHANGE_FIELD = single.make('CHANGE_FIELD')
-export const RESET_DATA = single.make('RESET_DATA')
+export const REQUEST_OPPOR_DATA = single.add('REQUEST_OPPOR_DATA')
+export const ADD_OPPOR_DATA = single.add('ADD_OPPOR_DATA')
+export const CHANGE_FIELD = single.add('CHANGE_FIELD')
+export const RESET_DATA = single.add('RESET_DATA')
 
 console.log('GRID', single)
 

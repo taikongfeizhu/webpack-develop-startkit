@@ -16,7 +16,7 @@ Singleton.prototype.setName = function (name) {
   return this
 }
 
-Singleton.prototype.make = function (name, ...prefix) {
+Singleton.prototype.add = function (name, ...prefix) {
   // 不走单例配置，按输入返回常量名
   if (prefix.length > 0) {
     const [ pre ] = prefix

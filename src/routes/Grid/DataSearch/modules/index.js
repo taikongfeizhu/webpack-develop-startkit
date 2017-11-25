@@ -14,8 +14,6 @@ export const ADD_OPPOR_DATA = single.add('ADD_OPPOR_DATA')
 export const CHANGE_FIELD = single.add('CHANGE_FIELD')
 export const RESET_DATA = single.add('RESET_DATA')
 
-console.log('GRID', single)
-
 // ------------------------------------
 // Actions
 // ------------------------------------

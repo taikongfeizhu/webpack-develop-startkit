@@ -12,8 +12,6 @@ export const REQUEST_OPPOR_DATA = single.add('REQUEST_OPPOR_DATA')
 export const ADD_OPPOR_DATA = single.add('ADD_OPPOR_DATA')
 export const REQUEST_OPPOR_FETCHING = single.add('REQUEST_OPPOR_FETCHING')
 
-console.log('THUNK', single)
-
 // ------------------------------------
 // Actions
 // ------------------------------------

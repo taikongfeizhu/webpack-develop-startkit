@@ -29,6 +29,8 @@ export const requestOpportunityFetching = (payload) => ({
 })
 
 export const requestOpportunityData = () => async (dispatch, getState) => {
+  // redux-thunk处理异步请求的模板代码过多且重复 (XX_SUCCESS | XX_FAILED | XX_FETCHING)
+  // redux异步处理方案的比较文章可以参看：https://segmentfault.com/a/1190000007248878
   dispatch(requestOpportunityFetching(true))
   try {
     let response = await fetchAPI(apis.getOpporList)

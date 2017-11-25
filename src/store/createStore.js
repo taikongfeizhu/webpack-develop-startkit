@@ -10,7 +10,7 @@ export default (initialState = {}) => {
   // Middleware Configuration
   // ======================================================
   const sagaMiddleware = createSagaMiddleware()
-  const middleware = [sagaMiddleware, thunk]
+  const middleware = [thunk, sagaMiddleware]
 
   // ======================================================
   // Store Enhancers

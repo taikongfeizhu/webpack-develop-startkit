@@ -10,6 +10,7 @@ const single = singleton.setKey('THUNK')
 // ------------------------------------
 export const REQUEST_OPPOR_DATA = single.add('REQUEST_OPPOR_DATA')
 export const ADD_OPPOR_DATA = single.add('ADD_OPPOR_DATA')
+export const REQUEST_OPPOR_FETCHING = single.add('REQUEST_OPPOR_FETCHING')
 
 console.log('THUNK', single)
 
@@ -22,12 +23,20 @@ export const addOpportunityData = (payload) => ({
   payload : payload
 })
 
+export const requestOpportunityFetching = (payload) => ({
+  type    : REQUEST_OPPOR_FETCHING,
+  payload : payload
+})
+
 export const requestOpportunityData = () => async (dispatch, getState) => {
+  dispatch(requestOpportunityFetching(true))
   try {
     let response = await fetchAPI(apis.getOpporList)
     await dispatch(addOpportunityData(response.data))
+    dispatch(requestOpportunityFetching(false))
     return response
   } catch (error) {
+    dispatch(requestOpportunityFetching(false))
     console.log('error: ', error)
   }
 }
@@ -40,16 +49,20 @@ export const actions = {
 // Reducer
 // ------------------------------------
 var initialState = Immutable.fromJS({
-  opporList: []
+  opporList: [],
+  isFetching: false
 })
 
 export default function thunkDemo (state = initialState, action) {
-  var map = {
+  const map = {
     [REQUEST_OPPOR_DATA]: function () {
       return state.set('params', action.payload)
     },
     [ADD_OPPOR_DATA]: function () {
       return state.set('opporList', action.payload)
+    },
+    [REQUEST_OPPOR_FETCHING]: function () {
+      return state.set('isFetching', action.payload)
     }
   }
 

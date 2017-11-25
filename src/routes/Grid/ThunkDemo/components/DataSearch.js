@@ -38,6 +38,7 @@ class BasicTable extends React.Component {
   render () {
     const { thunk } = this.props
     const opporList = _.get(thunk, 'opporList', [])
+    const isFetching = _.get(thunk, 'isFetching', false)
     return (
       <Card title='Thunk Demo'>
         <Form layout='inline'>
@@ -46,6 +47,7 @@ class BasicTable extends React.Component {
           </FormItem>
         </Form>
         <CustomTable
+          loading={isFetching}
           dataSource={opporList}
           columns={utils.buildColumns(columns)}
           scroll={{ x: 1200 }}

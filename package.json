@@ -9,7 +9,6 @@
     "lint": "eslint bin build config server src tests --ext .jsx,.js",
     "lint:fix": "npm run lint -- --fix",
     "start": "better-npm-run start",
-    "electron": "better-npm-run electron",
     "dev": "better-npm-run dev",
     "test": "better-npm-run test",
     "test:dev": "npm run test -- --watch",
@@ -17,6 +16,7 @@
     "deploy:dev": "better-npm-run deploy:dev",
     "deploy:prod": "better-npm-run deploy:prod",
     "deploy:analyze": "better-npm-run deploy:analyze",
+    "develop:analyze": "better-npm-run develop:analyze",
     "codecov": "cat coverage/*/lcov.info | codecov",
     "precommit": "npm run lint:fix",
     "prepush": "npm run lint:fix",
@@ -63,15 +63,15 @@
     "deploy:analyze": {
       "command": "yarn run deploy",
       "env": {
-        "NODE_ENV": "analyze",
-        "DEBUG": "app:*"
+        "NODE_ENV": "production",
+        "ANALYZE_ENV": "analyze"
       }
     },
-    "electron": {
-      "command": "yarn run deploy:prod && electron electronIndex.js",
+    "develop:analyze": {
+      "command": "yarn run deploy",
       "env": {
-        "NODE_ENV": "production",
-        "DEBUG": "app:*"
+        "NODE_ENV": "development",
+        "ANALYZE_ENV": "analyze"
       }
     },
     "start": {

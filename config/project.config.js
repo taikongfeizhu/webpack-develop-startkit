@@ -11,6 +11,7 @@ debug('Creating default configuration.')
 // ========================================================
 const config = {
   env : process.env.NODE_ENV || 'development',
+  analyze: process.env.ANALYZE_ENV || 'noanalyze',
 
   // ----------------------------------
   // Project Structure
@@ -87,7 +88,7 @@ config.globals = {
   '__DEV__'      : config.env === 'development',
   '__PROD__'     : config.env === 'production',
   '__TEST__'     : config.env === 'test',
-  '__ANALYZE__'  : config.env === 'analyze',
+  '__ANALYZE__'  : config.analyze === 'analyze',
   '__COVERAGE__' : !argv.watch && config.env === 'test',
   '__BASENAME__' : JSON.stringify(process.env.BASENAME || '')
 }

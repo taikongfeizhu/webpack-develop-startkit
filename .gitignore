@@ -9,3 +9,4 @@ coverage
 
 .idea/
 deploy.sh
+public/lib/debug/

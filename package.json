@@ -16,12 +16,15 @@
     "deploy": "better-npm-run deploy",
     "deploy:dev": "better-npm-run deploy:dev",
     "deploy:prod": "better-npm-run deploy:prod",
+    "deploy:analyze": "better-npm-run deploy:analyze",
     "codecov": "cat coverage/*/lcov.info | codecov",
     "precommit": "npm run lint:fix",
     "prepush": "npm run lint:fix",
     "commitmsg": "validate-commit-msg",
     "commit": "git-cz ",
-    "preview": "NODE_ENV=release node ./bin/dev-server.js"
+    "preview": "NODE_ENV=release node ./bin/dev-server.js",
+    "dll": "NODE_ENV=production node ./node_modules/webpack/bin/webpack --config config/webpack.dll.config.js --progress",
+    "dll:dev": "NODE_ENV=development node ./node_modules/webpack/bin/webpack --config config/webpack.dll.config.js --progress"
   },
   "betterScripts": {
     "compile": {
@@ -54,6 +57,13 @@
       "command": "yarn run deploy",
       "env": {
         "NODE_ENV": "production",
+        "DEBUG": "app:*"
+      }
+    },
+    "deploy:analyze": {
+      "command": "yarn run deploy",
+      "env": {
+        "NODE_ENV": "analyze",
         "DEBUG": "app:*"
       }
     },
@@ -149,10 +159,11 @@
     "yarn": "^0.24.4"
   },
   "dependencies": {
-    "antd": "^2.13.1",
+    "add-asset-html-webpack-plugin": "^2.1.2",
     "add-dom-event-listener": "^1.0.1",
     "animate.css": "^3.5.2",
     "animejs": "^1.1.1",
+    "antd": "^2.13.1",
     "axios": "^0.16.2",
     "body-parser": "^1.17.2",
     "classnames": "^2.2.5",
@@ -188,6 +199,7 @@
     "redux-thunk": "^2.2.0",
     "shallowequal": "^0.2.2",
     "webpack": "^3.5.2",
+    "webpack-bundle-analyzer": "^2.9.1",
     "webpack-uglify-parallel": "^0.1.3"
   },
   "config": {

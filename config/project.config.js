@@ -2,6 +2,7 @@
 const path = require('path')
 const debug = require('debug')('app:config:project')
 const argv = require('yargs').argv
+const lib = require('./lib.dependencies')
 // const ip = require('ip')
 
 debug('Creating default configuration.')
@@ -21,6 +22,7 @@ const config = {
   dir_dist   : 'output/resource/startkit',
   dir_template : 'output/template/startkit',
   dir_public : 'public',
+  dir_common : 'common',
   dir_server : 'server',
   dir_test   : 'tests',
   postcss_sourcemap: false,
@@ -44,26 +46,15 @@ const config = {
   compiler_hash_type       : 'hash:12',
   compiler_fail_on_warning : false,
   compiler_quiet           : false,
-  compiler_public_path     : '/resource/startkit',
+  compiler_public_path     : '/resource/startkit/',
+  compiler_common_path     : '/common/',
   compiler_mock_route      : '/mock',
   compiler_stats           : {
     chunks : false,
     chunkModules : false,
     colors : true
   },
-  compiler_vendors : [
-    'react',
-    'react-dom',
-    'react-router',
-    'redux',
-    'redux-saga',
-    'redux-thunk',
-    'history',
-    'react-redux',
-    'immutable',
-    'lodash',
-    'isomorphic-fetch'
-  ],
+  compiler_vendors : lib,
 
   // ----------------------------------
   // Test Configuration
@@ -96,6 +87,7 @@ config.globals = {
   '__DEV__'      : config.env === 'development',
   '__PROD__'     : config.env === 'production',
   '__TEST__'     : config.env === 'test',
+  '__ANALYZE__'  : config.env === 'analyze',
   '__COVERAGE__' : !argv.watch && config.env === 'test',
   '__BASENAME__' : JSON.stringify(process.env.BASENAME || '')
 }
@@ -129,6 +121,7 @@ config.paths = {
   node_modules : base.bind(null, config.node_modules),
   client : base.bind(null, config.dir_client),
   public : base.bind(null, config.dir_public),
+  common : base.bind(null, config.dir_common),
   dist   : base.bind(null, config.dir_dist),
   template : base.bind(null, config.dir_template)
 }

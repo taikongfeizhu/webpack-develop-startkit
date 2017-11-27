@@ -1,16 +1,22 @@
+/* docs: http://www.css88.com/doc/webpack2/ */
 const argv = require('yargs').argv
 const os = require('os')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const UglifyJsParallelPlugin = require('webpack-uglify-parallel')
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
+const BundlePlugin = require('webpack-bundle-analyzer')
 const project = require('./project.config')
 const debug = require('debug')('app:config:webpack')
 const packConfig = require('../package')
+const path = require('path')
+const BundleAnalyzerPlugin = BundlePlugin.BundleAnalyzerPlugin
 
 const __DEV__ = project.globals.__DEV__
 const __PROD__ = project.globals.__PROD__
 const __TEST__ = project.globals.__TEST__
+const __ANALYZE__ = project.globals.__ANALYZE__
 
 debug('Creating configuration.')
 const webpackConfig = {
@@ -42,7 +48,7 @@ webpackConfig.output = {
   filename   : `js/[name].[${project.compiler_hash_type}]${project.compiler_timestamp}.js`,
   path       : project.paths.dist(),
   publicPath : project.compiler_public_path,
-  chunkFilename: '[name].[id].js'
+  chunkFilename: 'js/[name].[id].js'
 }
 
 // ------------------------------------
@@ -97,8 +103,20 @@ if (__TEST__ && !argv.watch) {
 if (__DEV__) {
   debug('Enabling plugins for live development (HMR, NoErrors).')
   webpackConfig.plugins.push(
-    new webpack.HotModuleReplacementPlugin()
-    // new webpack.NoErrorsPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    // webpack dllplugin
+    new webpack.DllReferencePlugin({
+      context: __dirname,
+      manifest: require('../public/lib/debug/manifest.json')
+    }),
+    new AddAssetHtmlPlugin([
+      {
+        filepath: path.resolve(__dirname, '../public/lib/debug/lib.js'),
+        outputPath: `${project.compiler_public_path}lib/debug`,
+        publicPath: `${project.compiler_public_path}lib/debug`,
+        includeSourcemap: true
+      }
+    ])
   )
 } else if (__PROD__) {
   debug('Enabling plugins for production (UglifyJS).')
@@ -113,7 +131,25 @@ if (__DEV__) {
         drop_debugger: true,
         dead_code: true
       }
-    })
+    }),
+    new webpack.DllReferencePlugin({
+      context: __dirname,
+      manifest: require('../public/lib/min/manifest.json')
+    }),
+    new AddAssetHtmlPlugin([
+      {
+        filepath: path.resolve(__dirname, '../public/lib/min/lib.cecb9754d.js'),
+        outputPath: `${project.compiler_public_path}lib/min`,
+        publicPath: `${project.compiler_public_path}lib/min`,
+        includeSourcemap: false
+      }
+    ])
+  )
+}
+
+if (__ANALYZE__) {
+  webpackConfig.plugins.push(
+    new BundleAnalyzerPlugin()
   )
 }
 

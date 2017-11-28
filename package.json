@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "clean": "rimraf output/*",
+    "clear:lib": "rimraf output/resource/startkit/lib/debug",
     "compile": "better-npm-run compile",
     "lint": "eslint bin build config server src tests --ext .jsx,.js",
     "lint:fix": "npm run lint -- --fix",
@@ -41,7 +42,7 @@
       }
     },
     "deploy": {
-      "command": "yarn run lint && yarn run clean && yarn run compile",
+      "command": "yarn run lint && yarn run clean && yarn run compile && yarn run clear:lib",
       "env": {
         "DEBUG": "app:*"
       }

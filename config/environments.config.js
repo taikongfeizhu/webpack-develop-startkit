@@ -26,7 +26,7 @@ module.exports = {
   // cdn public_path: //s3a.pstatp.com/cg_growth/resource/startkit/
   // ======================================================
   production : (config) => ({
-    compiler_public_path     : publishPath.cdn,
+    compiler_public_path     : publishPath.server,
     compiler_base_route      : '/',
     compiler_fail_on_warning : false,
     compiler_hash_type       : 'chunkhash:12',

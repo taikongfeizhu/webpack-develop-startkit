@@ -138,8 +138,8 @@ if (__DEV__) {
     }),
     new AddAssetHtmlPlugin([
       {
-        filepath: path.resolve(__dirname, '../public/lib/min/lib.cecb9754d.js'),
-        outputPath: `${project.compiler_public_path}lib/min`,
+        filepath: path.resolve(__dirname, '../public/lib/min/lib.8f231891f.js'),
+        // outputPath: `${project.compiler_public_path}lib/min`,
         publicPath: `${project.compiler_public_path}lib/min`,
         includeSourcemap: false
       }

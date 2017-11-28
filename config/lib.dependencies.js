@@ -4,6 +4,7 @@ const lib = [
   'react-dom',
   'react-router',
   'redux',
+  'recharts',
   'redux-saga',
   'redux-thunk',
   'history',

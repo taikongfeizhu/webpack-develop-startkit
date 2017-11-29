@@ -49,8 +49,8 @@ class SiderCustom extends PureComponent {
   }
 
   transFormMenuItem (obj, paths, isLevel1) {
-    const parentPath = paths.join('/')   // 将各级父目录组合成完整的路径
-    logger.debug('transform %o to path %s', obj, parentPath)
+    const parentPath = obj.url || paths.join('/')   // 如果存在url则直接自定url，否则将各级父目录组合成完整的路径
+    logger.debug('transform %o to path %s', parentPath)
     return (
       <MenuItem key={obj.key} style={{ margin: '0px' }}>
         {obj.icon && <Icon type={obj.icon} />}

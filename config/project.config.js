@@ -20,8 +20,8 @@ const config = {
   dir_client : 'src',
   proxy_table : {},
   node_modules : 'node_modules',
-  dir_dist   : 'output/resource/startkit',
-  dir_template : 'output/template/startkit',
+  dir_dist   : 'output/resource/hilo',
+  dir_template : 'output/template/hilo',
   dir_public : 'public',
   dir_common : 'common',
   dir_server : 'server',
@@ -47,7 +47,7 @@ const config = {
   compiler_hash_type       : 'hash:12',
   compiler_fail_on_warning : false,
   compiler_quiet           : false,
-  compiler_public_path     : '/resource/startkit/',
+  compiler_public_path     : '/resource/hilo/',
   compiler_common_path     : '/common/',
   compiler_mock_route      : '/mock',
   compiler_stats           : {
@@ -55,7 +55,7 @@ const config = {
     chunkModules : false,
     colors : true
   },
-  compiler_vendors : lib,
+  compiler_vendors : lib.vendors,
 
   // ----------------------------------
   // Test Configuration

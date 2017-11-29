@@ -21,7 +21,8 @@ router.get('/api/opportunity_list', function (req, res) {
       'status_name': '跟进中',
       'address': '我要上天科技有限公司'
     }],
-    code: 1
+    code: 1,
+    total: 50
   })
   res.json(data)
 })

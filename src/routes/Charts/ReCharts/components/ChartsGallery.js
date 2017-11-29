@@ -9,7 +9,7 @@ import {
   RadialBarChart,
   RadarChart
 } from 'components/Recharts'
-import Card from 'components/Card'
+import CustomCard from 'components/CustomCard'
 
 class ChartsGallery extends React.Component {
   render () {
@@ -18,34 +18,34 @@ class ChartsGallery extends React.Component {
         <Row gutter={16}>
           <Col className='gutter-row' md={24}>
             <div className='gutter-box'>
-              <Card title='基础线形图'>
+              <CustomCard title='基础线形图'>
                 <SimpleLineChart />
-              </Card>
+              </CustomCard>
             </div>
           </Col>
         </Row>
         <Row gutter={16}>
           <Col className='gutter-row' md={24}>
             <div className='gutter-box'>
-              <Card title='基础线形图'>
+              <CustomCard title='基础线形图'>
                 <BarChart />
-              </Card>
+              </CustomCard>
             </div>
           </Col>
         </Row>
         <Row gutter={16}>
           <Col className='gutter-row' md={12}>
             <div className='gutter-box'>
-              <Card title='基础线形图'>
+              <CustomCard title='基础线形图'>
                 <RadialBarChart />
-              </Card>
+              </CustomCard>
             </div>
           </Col>
           <Col className='gutter-row' md={12}>
             <div className='gutter-box'>
-              <Card title='基础线形图'>
+              <CustomCard title='基础线形图'>
                 <RadarChart />
-              </Card>
+              </CustomCard>
             </div>
           </Col>
         </Row>

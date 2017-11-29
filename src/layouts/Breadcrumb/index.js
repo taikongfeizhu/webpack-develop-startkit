@@ -31,7 +31,6 @@ class Bread extends React.PureComponent {
     const iconMap = new Map()
     const nameMap = new Map()
 
-    // 这是个很有意思的函数, 本质是dfs, 但用js写出来就觉得很神奇
     const browseMenu = (item) => {
       nameMap.set(item.key, item.name)
       logger.debug('nameMap add entry: key=%s, value=%s', item.key, item.name)
@@ -67,7 +66,6 @@ class Bread extends React.PureComponent {
     for (const route of this.props.routes) {
       logger.debug('path=%s, route=%o', route.path, route)
       const name = this.nameMap.get(route.path)
-
       if (name) {
         const icon = this.iconMap.get(route.path)
         if (icon) {

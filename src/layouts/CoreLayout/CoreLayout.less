@@ -2,6 +2,7 @@
 
 body {
   height: 100%;
+  background: @layout-color;
 }
 
 #preloader {
@@ -39,17 +40,19 @@ body {
   }
 
   .ant-layout-sider{
-    margin-top: @custome-header-height;
+    margin-top: @custom-header-height;
+    background: @custom-sider-background;
+    box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
   }
 
   .custom-header{
-    height: @custome-header-height;
-    background: @custome-header-background;
+    height: @custom-header-height;
+    background: @custom-header-background;
     padding: 0;
     flex: 0 0 auto;
-    box-shadow: @custome-header-box-shadow;
+    box-shadow: @custom-header-box-shadow;
     position: fixed;
-    z-index: 9999;
+    z-index: 900;
     width: 100%;
   }
 
@@ -63,6 +66,11 @@ body {
     .gutter-box{
       padding: 5px 0;
     }
+    .ant-card-wider-padding{
+      .ant-card-body{
+        padding: 25px 20px;
+      }
+    }
   }
 
   .footer{
@@ -71,8 +79,7 @@ body {
     text-align: center;
     font-size: 12px;
     color: #999;
-    background: #fff;
-    box-shadow: 4px 4px 40px 0 rgba(0,0,0,.05);
+    background: none;
     margin: 5px 0 0 0;
     padding: 0;
   }

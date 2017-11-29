@@ -26,15 +26,12 @@ Singleton.prototype.add = function (name, ...prefix) {
   if (nameMerge) {
     return nameMerge.getName(name, this.activedKey)
   } else {
-    throw new Error('this constant exist')
+    throw new Error('this key exist')
   }
 }
 
 Singleton.prototype.setKey = function (key) {
   this.activedKey = key
-  if (Object.keys(this.namespace).includes(key)) {
-    throw new Error('this key exist, please check you modules')
-  }
   this.namespace[key] = []
   return this
 }

@@ -9,6 +9,7 @@ import globalConfig from 'config'
 import './CoreLayout.less'
 
 const { Content, Footer } = Layout
+const { baseConf:{ user } } = globalConfig
 
 class CoreLayout extends Component {
   constructor (props) {
@@ -31,7 +32,7 @@ class CoreLayout extends Component {
     return (
       <Layout className='ant-layout-has-sider'>
         <SiderCustom path={pathname} collapsed={collapsed} toggle={this.toggle} />
-        <HeaderCustom toggle={this.toggle} user={{}} router={router}
+        <HeaderCustom toggle={this.toggle} user={user} router={router}
           path={pathname} collapsed={collapsed} />
         <Layout>
           <Content className='custom-content'>

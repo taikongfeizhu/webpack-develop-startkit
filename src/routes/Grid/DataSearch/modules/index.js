@@ -9,62 +9,63 @@ const single = singleton.setKey('GRID')
 // ------------------------------------
 // Constants
 // ------------------------------------
-export const REQUEST_OPPOR_DATA = single.add('REQUEST_OPPOR_DATA')
-export const ADD_OPPOR_DATA = single.add('ADD_OPPOR_DATA')
-export const CHANGE_FIELD = single.add('CHANGE_FIELD')
-export const RESET_DATA = single.add('RESET_DATA')
+export const GET_LIST_DATA = single.add('GET_LIST_DATA')
+export const ADD_LIST_DATA = single.add('ADD_LIST_DATA')
+const PAGE_SIZE = 10
 
 // ------------------------------------
 // Actions
 // ------------------------------------
-export function requestOpportunityData (body) {
+export function getOpportunityData (body) {
   return {
-    type    : REQUEST_OPPOR_DATA,
+    type    : GET_LIST_DATA,
     payload : body
   }
 }
 
 export function addOpportunityData (body) {
   return {
-    type    : ADD_OPPOR_DATA,
+    type    : ADD_LIST_DATA,
     payload : body
-  }
-}
-
-export function changeField (body) {
-  return {
-    type    : CHANGE_FIELD,
-    payload : body
-  }
-}
-
-export function resetData () {
-  return {
-    type    : RESET_DATA
   }
 }
 
 export const actions = {
-  requestOpportunityData,
-  changeField,
-  resetData
+  getOpportunityData
 }
 
 // ------------------------------------
 // Reducer
 // ------------------------------------
 var initialState = Immutable.fromJS({
-  opporList: [],
-  params: ''
+  list: [],
+  fieldsValue: {},
+  auth: {},
+  serial: '',
+  loading: false
 })
 
 export default function grid (state = initialState, action) {
-  var map = {
-    [REQUEST_OPPOR_DATA]: function () {
-      return state.set('params', action.payload)
+  const map = {
+    [GET_LIST_DATA]: function () {
+      let { params = {} } = action.payload
+      return state.mergeIn(
+        ['pagination'], {
+          current: +(params.current || 1),
+          pageSize: +(params.limit || PAGE_SIZE)
+        }
+      ).set(
+        'loading', true
+      )
     },
-    [ADD_OPPOR_DATA]: function () {
-      return state.set('opporList', action.payload)
+    [ADD_LIST_DATA]: function () {
+      let { list } = action.payload
+      return state.mergeIn(
+        ['pagination'], { total: list.total }
+      ).merge({
+        loading: false,
+        list: list.data
+      })
     }
   }
 
@@ -80,12 +81,12 @@ export default function grid (state = initialState, action) {
 // ------------------------------------
 export function *fetchOpportunityList (type, body) {
   while (true) {
-    const { payload } = yield take(REQUEST_OPPOR_DATA)
+    const { payload = {} } = yield take(GET_LIST_DATA)
+    const { params } = payload
     const [follow] = [
-      yield call(fetchAPI, apis.getOpporList, payload)
+      yield call(fetchAPI, apis.getOpporList, params)
     ]
-
-    yield put(addOpportunityData(follow.data))
+    yield put(addOpportunityData({ list: follow }))
   }
 }
 

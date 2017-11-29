@@ -7,7 +7,7 @@ const mapDispatchToProps = {
 }
 
 const mapStateToProps = (state) => ({
-  curd: state.grid_curd.toJS()
+  curd: state.grid_curd
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(DataSearch)

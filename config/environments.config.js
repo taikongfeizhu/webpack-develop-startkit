@@ -6,8 +6,8 @@ const withSourceMap = process.argv.slice(2).includes('sourcemap') > 0
 const withTimestamp = process.argv.slice(2).includes('timestamp') > 0
 
 const publishPath = {
-  server: '/resource/startkit/',
-  cdn: '//s3a.pstatp.com/cg_growth/resource/startkit/'
+  server: '/resource/hilo/',
+  cdn: '//s3a.pstatp.com/cg_growth/resource/hilo/'
 }
 
 module.exports = {
@@ -26,7 +26,7 @@ module.exports = {
   // cdn public_path: //s3a.pstatp.com/cg_growth/resource/startkit/
   // ======================================================
   production : (config) => ({
-    compiler_public_path     : publishPath.server,
+    compiler_public_path     : publishPath.cdn,
     compiler_base_route      : '/',
     compiler_fail_on_warning : false,
     compiler_hash_type       : 'chunkhash:12',

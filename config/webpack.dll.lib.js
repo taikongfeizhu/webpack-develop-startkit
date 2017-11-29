@@ -48,7 +48,7 @@ if (!isDebug) {
 module.exports = {
   devtool: 'source-map',
   entry: {
-    lib: lib
+    lib: lib.dll
   },
   output: {
     path: outputPath,

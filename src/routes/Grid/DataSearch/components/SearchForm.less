@@ -1,0 +1,54 @@
+.tableListForm {
+  margin-bottom: 20px;
+  .ant-form-item-control-wrapper {
+    flex: 1;
+    .ant-form-item-control {
+      width: 95%;
+    }
+  }
+  .ant-form-item {
+    margin-right: 0;
+    display: flex;
+    > .ant-form-item-label {
+      padding-right: 5px;
+    }
+  }
+  .search-box {
+    text-align: right;
+    .ant-form-item-control {
+      width: 100%;
+    }
+  }
+  .divider {
+    padding-bottom: 10px;
+    &.border {
+      border-bottom: 1px solid #eaeaea;
+    }
+    &.border-none {
+      border-bottom: none;
+      padding: 8px 0;
+    }
+    .status-button {
+      button {
+        margin-right: 8px;
+        border: none;
+        color: #fff;
+      }
+      .launch {
+        background: #379fff;
+      }
+      .approved {
+        background: #68cb39;
+      }
+      .reject {
+        background: #f41e28;
+      }
+    }
+    .datepicker-box {
+      text-align: right;
+      .ant-form-item-control {
+        width: 100% !important;
+      }
+    }
+  }
+}

@@ -4,8 +4,15 @@
   height: 50px;
   margin-right: 0;
   text-align: center;
-  box-shadow: 2px 2px 20px 0 rgba(0,0,0,.05);
-  background: #414141;
+  transition: all 0.2s;
+  background: #002135;
+  box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
+}
+
+.ant-layout-logo-text{
+  font-size: 18px;
+  opacity: 1;
+  transition: opacity 0.2s ease-in;
 }
 
 .ant-layout-logo-normal {
@@ -30,24 +37,26 @@
     color: #dcdcdc;
   }
   &-name{
-    display: inline-block;
     color: #dcdcdc;
     padding-left: 5px;
+    .ant-layout-logo-text
   }
   &-sub-name{
-    display: inline-block;
     padding-left: 1px;
     color: #0ca0ff;
+    .ant-layout-logo-text
   }
 }
 
 .ant-layout-logo-collapse {
   width: 64px;
-  transition: all 0.2s;
   .ant-layout-logo-base;
   background-position: 17px center;
+  position: relative;
   .ant-layout-logo-name,
   .ant-layout-logo-sub-name{
-    display: none;
+    opacity: 0;
+    position: absolute;
+    z-index: -10;
   }
 }

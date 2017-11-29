@@ -3,7 +3,7 @@ import moment from 'moment'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router'
 import { Button, Row, Col } from 'antd'
-import Card from 'components/Card'
+import CustomCard from 'components/CustomCard'
 import './HomeView.less'
 
 const EnumPostStatus = {
@@ -42,7 +42,7 @@ class HomeView extends React.Component {
     console.log(params)
     return (
       <div className='gutter-example'>
-        <Card title='路由示例'>
+        <CustomCard title='路由示例'>
           <Row>
             <Col span={3}>action:</Col>
             <Col span={8}>{location.action}</Col>
@@ -85,7 +85,7 @@ class HomeView extends React.Component {
               <Button onClick={(e) => { this.handleCHangeRouter(e, 'PUBLISHED') }}>Router2</Button>
             </Col>
           </Row>
-        </Card>
+        </CustomCard>
       </div>
     )
   }

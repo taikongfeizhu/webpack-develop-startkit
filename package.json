@@ -1,11 +1,11 @@
 {
   "name": "webpack-develop-startkit",
+  "title": "webpack-develop-startkit",
   "version": "0.0.1",
   "description": "a react start kit for react",
   "main": "index.js",
   "scripts": {
     "clean": "rimraf output/*",
-    "clear:lib": "rimraf output/resource/startkit/lib/debug",
     "compile": "better-npm-run compile",
     "lint": "eslint bin build config server src tests --ext .jsx,.js",
     "lint:fix": "npm run lint -- --fix",
@@ -24,8 +24,8 @@
     "commitmsg": "validate-commit-msg",
     "commit": "git-cz ",
     "preview": "NODE_ENV=release node ./bin/dev-server.js",
-    "dll": "NODE_ENV=production node ./node_modules/webpack/bin/webpack --config config/webpack.dll.config.js --progress",
-    "dll:dev": "NODE_ENV=development node ./node_modules/webpack/bin/webpack --config config/webpack.dll.config.js --progress"
+    "dll": "NODE_ENV=production node ./node_modules/webpack/bin/webpack --config config/webpack.dll.lib.js --progress",
+    "dll:dev": "NODE_ENV=development node ./node_modules/webpack/bin/webpack --config config/webpack.dll.lib.js --progress"
   },
   "betterScripts": {
     "compile": {
@@ -42,7 +42,7 @@
       }
     },
     "deploy": {
-      "command": "yarn run lint && yarn run clean && yarn run compile && yarn run clear:lib",
+      "command": "yarn run lint && yarn run clean && yarn run compile",
       "env": {
         "DEBUG": "app:*"
       }
@@ -102,19 +102,25 @@
     "webpack2-react-redux-starter"
   ],
   "devDependencies": {
+    "add-asset-html-webpack-plugin": "^2.1.2",
     "babel-core": "^6.21.0",
     "babel-eslint": "^7.1.1",
     "babel-loader": "^6.2.10",
     "babel-plugin-import": "^1.2.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-1": "^6.24.1",
     "babel-runtime": "^6.20.0",
-    "better-npm-run": "^0.0.13",
+    "better-npm-run": "^0.1.0",
     "codecov": "^1.0.1",
     "commitizen": "^2.9.6",
     "compression": "^1.6.2",
+    "connect-history-api-fallback": "^1.3.0",
+    "connect-restreamer": "^1.0.3",
     "css-loader": "^0.26.1",
     "cssnano": "^3.9.1",
     "cz-conventional-changelog": "^2.0.0",
@@ -141,7 +147,10 @@
     "less": "^2.7.2",
     "less-loader": "^4.0.3",
     "mocha": "^3.2.0",
+    "mockjs": "^1.0.1-beta3",
+    "node-fetch": "^1.7.1",
     "nodemon": "^1.11.0",
+    "opn": "^5.1.0",
     "postcss-loader": "^1.3.2",
     "postcss-pxtorem": "^4.0.0",
     "react-addons-test-utils": "^15.4.1",
@@ -154,23 +163,21 @@
     "svg-sprite-loader": "^0.3.0",
     "url-loader": "^0.5.7",
     "validate-commit-msg": "^2.11.1",
+    "webpack": "^3.8.1",
+    "webpack-bundle-analyzer": "^2.9.1",
     "webpack-dev-middleware": "^1.9.0",
     "webpack-hot-middleware": "^2.15.0",
+    "webpack-uglify-parallel": "^0.1.4",
     "yargs": "^6.5.0",
     "yarn": "^0.24.4"
   },
   "dependencies": {
-    "add-asset-html-webpack-plugin": "^2.1.2",
     "add-dom-event-listener": "^1.0.1",
     "animate.css": "^3.5.2",
     "animejs": "^1.1.1",
     "antd": "^2.13.1",
-    "axios": "^0.16.2",
     "body-parser": "^1.17.2",
     "classnames": "^2.2.5",
-    "clipboard": "^1.6.1",
-    "connect-history-api-fallback": "^1.3.0",
-    "connect-restreamer": "^1.0.3",
     "ejs": "^2.5.6",
     "font-awesome": "^4.7.0",
     "history": "~3.0.0",
@@ -178,11 +185,8 @@
     "isomorphic-fetch": "^2.2.1",
     "ladda": "^1.0.0",
     "lodash": "^4.17.4",
-    "mockjs": "^1.0.1-beta3",
     "multer": "^1.3.0",
-    "node-fetch": "^1.7.1",
     "nprogress": "^0.2.0",
-    "opn": "^5.1.0",
     "path-to-regexp": "^1.7.0",
     "prop-types": "^15.5.10",
     "querystring": "^0.2.0",
@@ -199,9 +203,7 @@
     "redux-saga": "^0.16.0",
     "redux-thunk": "^2.2.0",
     "shallowequal": "^0.2.2",
-    "webpack": "^3.5.2",
-    "webpack-bundle-analyzer": "^2.9.1",
-    "webpack-uglify-parallel": "^0.1.3"
+    "webpack-md5-hash": "^0.0.5"
   },
   "config": {
     "commitizen": {

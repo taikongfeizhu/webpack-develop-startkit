@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Card from 'components/Card'
+import CustomCard from 'components/CustomCard'
 import './HomeView.less'
 
 class HomeView extends React.Component {
@@ -12,9 +12,9 @@ class HomeView extends React.Component {
     // const { location, params } = this.props
     return (
       <div className='gutter-example'>
-        <Card title='Hello'>
-          <h2>Tree New Bee</h2>
-        </Card>
+        <CustomCard title='首页'>
+          <h2>Hello World</h2>
+        </CustomCard>
       </div>
     )
   }

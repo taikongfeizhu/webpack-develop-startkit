@@ -5,6 +5,7 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const UglifyJsParallelPlugin = require('webpack-uglify-parallel')
+const WebpackMd5Hash = require('webpack-md5-hash')
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
 const BundlePlugin = require('webpack-bundle-analyzer')
 const project = require('./project.config')
@@ -25,7 +26,7 @@ const webpackConfig = {
   devtool : project.compiler_devtool,
   resolve : {
     modules: [project.paths.client(), 'node_modules'],
-    extensions: ['.web.js', '.js', '.jsx', '.json']
+    extensions: ['.js', '.jsx', '.json', '.web.js']
   },
   module : {}
 }
@@ -48,7 +49,7 @@ webpackConfig.output = {
   filename   : `js/[name].[${project.compiler_hash_type}]${project.compiler_timestamp}.js`,
   path       : project.paths.dist(),
   publicPath : project.compiler_public_path,
-  chunkFilename: 'js/[name].[id].js'
+  chunkFilename: `js/[name].[id].[chunkhash:12].js`
 }
 
 // ------------------------------------
@@ -72,6 +73,7 @@ webpackConfig.plugins = [
   new HtmlWebpackPlugin({
     template: project.paths.client('index.html'),
     hash: false,
+    title: packConfig.title,
     version: packConfig.version,
     favicon: project.paths.public('favicon.ico'),
     filename: __DEV__ ? 'index.html' : project.paths.template('index.html'),
@@ -112,7 +114,7 @@ if (__DEV__) {
     new AddAssetHtmlPlugin([
       {
         filepath: path.resolve(__dirname, '../public/lib/debug/lib.js'),
-        outputPath: `${project.compiler_public_path}lib/debug`,
+        outputPath: 'lib/debug',
         publicPath: `${project.compiler_public_path}lib/debug`,
         includeSourcemap: true
       }
@@ -138,12 +140,26 @@ if (__DEV__) {
     }),
     new AddAssetHtmlPlugin([
       {
-        filepath: path.resolve(__dirname, '../public/lib/min/lib.8f231891f.js'),
-        // outputPath: `${project.compiler_public_path}lib/min`,
+        filepath: path.resolve(__dirname, '../public/lib/min/lib.2516cba88.js'),
+        outputPath: 'lib/min',
         publicPath: `${project.compiler_public_path}lib/min`,
         includeSourcemap: false
       }
-    ])
+    ]),
+    new WebpackMd5Hash(),
+    // 将jinja模板放进tempalte用以scm构建
+    new HtmlWebpackPlugin({
+      template: project.paths.public('notauth.html'),
+      hash: false,
+      filename: project.paths.template('notauth.html'),
+      inject: 'body'
+    }),
+    new HtmlWebpackPlugin({
+      template: project.paths.public('syserror.html'),
+      hash: false,
+      filename: project.paths.template('syserror.html'),
+      inject: 'body'
+    })
   )
 }
 

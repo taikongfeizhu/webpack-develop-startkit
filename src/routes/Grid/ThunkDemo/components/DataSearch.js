@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import utils from 'utils'
 import { Button, Form } from 'antd'
 import CustomTable from 'components/CustomTable'
-import Card from 'components/Card'
+import CustomCard from 'components/CustomCard'
 import _ from 'lodash'
 
 const FormItem = Form.Item
@@ -40,7 +40,7 @@ class BasicTable extends React.Component {
     const opporList = _.get(thunk, 'opporList', [])
     const isFetching = _.get(thunk, 'isFetching', false)
     return (
-      <Card title='Thunk Demo'>
+      <CustomCard title='Thunk Demo'>
         <Form layout='inline'>
           <FormItem>
             <Button size='small' onClick={this.handleRequstOpporData}>刷新数据</Button>
@@ -52,7 +52,7 @@ class BasicTable extends React.Component {
           columns={utils.buildColumns(columns)}
           scroll={{ x: 1200 }}
         />
-      </Card>
+      </CustomCard>
     )
   }
 }

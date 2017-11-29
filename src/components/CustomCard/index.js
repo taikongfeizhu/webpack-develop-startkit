@@ -6,13 +6,12 @@ import { Card } from 'antd'
 import PropTypes from 'prop-types'
 
 const CardContainer = (props) => (
-  <Card title={props.title} bordered={false}>
+  <Card bordered={false} {...props}>
     {props.children}
   </Card>
 )
 
 CardContainer.propTypes = {
-  title: PropTypes.string.isRequired,
   children: PropTypes.any.isRequired
 }
 

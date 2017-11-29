@@ -4,7 +4,7 @@
 import React from 'react'
 import LazilyLoad, { importLazy } from 'utils/LazilyLoad'
 import { Button } from 'antd'
-import Card from 'components/Card'
+import CustomCard from 'components/CustomCard'
 
 class LazyLoad extends React.Component {
   constructor (props) {
@@ -44,12 +44,12 @@ class LazyLoad extends React.Component {
   render () {
     const { loadModules } = this.state
     return (
-      <Card title='模块懒加载'>
+      <CustomCard title='模块懒加载'>
         <Button onClick={this.handleLoadHot}>load</Button>
         <div>
           {loadModules && this.listContent()}
         </div>
-      </Card>
+      </CustomCard>
     )
   }
 }
